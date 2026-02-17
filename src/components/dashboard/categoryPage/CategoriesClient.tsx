@@ -150,7 +150,7 @@ const CategoriesClient = ({ initialCategories }: Props) => {
       <div className="flex justify-end">
         <Button
           onClick={handleAdd}
-          className="flex items-center gap-2 cursor-pointer"
+          className="flex items-center gap-2 bg-orange-600 hover:bg-orange-500 cursor-pointer"
         >
           <Plus size={16} /> Add Category
         </Button>
@@ -192,7 +192,7 @@ const CategoriesClient = ({ initialCategories }: Props) => {
                   <Button
                     size="sm"
                     onClick={() => handleInlineSave(cat.id!)}
-                    className="cursor-pointer"
+                    className="cursor-pointer bg-orange-600"
                     disabled={loadingInlineId === cat.id}
                   >
                     {loadingInlineId === cat.id ? (
@@ -219,6 +219,7 @@ const CategoriesClient = ({ initialCategories }: Props) => {
                 <div className="flex justify-end gap-2 mt-2">
                   <Button
                     size="sm"
+                    variant="outline"
                     className="flex items-center gap-1 cursor-pointer"
                     onClick={() => handleInlineEdit(cat)}
                   >
@@ -269,7 +270,7 @@ const CategoriesClient = ({ initialCategories }: Props) => {
             </Button>
             <Button
               onClick={handleSubmit}
-              className="cursor-pointer"
+              className="cursor-pointer bg-orange-600"
               disabled={loadingAddUpdate}
             >
               {loadingAddUpdate

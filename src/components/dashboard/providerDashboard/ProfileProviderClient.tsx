@@ -70,7 +70,7 @@ const ProfileProviderClient = ({ user }: Props) => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg space-y-6">
-      <h1 className="text-2xl font-bold text-center">Customer Profile</h1>
+      <h1 className="text-2xl font-bold text-center">Provider Profile</h1>
 
       <div className="flex flex-col items-center space-y-4">
         <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-orange-600 flex items-center justify-center bg-gray-100">

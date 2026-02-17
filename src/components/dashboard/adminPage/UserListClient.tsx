@@ -129,8 +129,9 @@ const UserListClient = ({ users: initialUsers }: Props) => {
           <div className="flex flex-col sm:flex-row gap-2 mt-2 sm:mt-0">
             <Button
               onClick={() => openEdit(user)}
+              variant="outline"
               disabled={updateLoadingId === user.id}
-              className="w-full sm:w-auto cursor-pointer"
+              className="w-full sm:w-auto text-orange-600 cursor-pointer"
             >
               {updateLoadingId === user.id ? "Processing..." : "Edit"}
             </Button>
@@ -142,7 +143,7 @@ const UserListClient = ({ users: initialUsers }: Props) => {
       <Dialog open={!!editUser} onOpenChange={(open) => !open && closeEdit()}>
         <DialogContent className="max-w-md sm:max-w-lg w-full">
           <DialogHeader>
-            <DialogTitle>Edit User</DialogTitle>
+            <DialogTitle className="text-center text-xl">Edit User</DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4 mt-2">
@@ -214,7 +215,7 @@ const UserListClient = ({ users: initialUsers }: Props) => {
             <Button
               onClick={handleUpdate}
               disabled={updateLoadingId !== null}
-              className="w-full sm:w-auto cursor-pointer"
+              className="w-full sm:w-auto cursor-pointer bg-orange-600"
             >
               {updateLoadingId === editUser?.id ? "Updating..." : "Update"}
             </Button>

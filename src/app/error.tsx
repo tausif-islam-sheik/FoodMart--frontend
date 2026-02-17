@@ -21,7 +21,7 @@ export default function Error({
           We couldn’t load this page right now. Please try again.
         </p>
 
-        <Button onClick={reset}>Try Again</Button>
+        <Button className="bg-orange-600 hover:bg-orange-500 cursor-pointer" onClick={reset}>Try Again</Button>
       </div>
     </div>
   );
