@@ -15,9 +15,9 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <div>
           <Navbar />
-          <div className="min-h-screen">{children}</div>
+          <div className="pt-16 md:pt-20 min-h-screen">{children}</div>
           <Footer />
-          <Toaster richColors />
+          <Toaster richColors position="top-center" />
         </div>
       </ThemeProvider>
     </div>

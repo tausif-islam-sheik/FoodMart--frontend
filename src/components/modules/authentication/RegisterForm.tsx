@@ -31,12 +31,12 @@ import { toast } from "sonner";
 export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
   const router = useRouter();
 
-  const handleGoogleLogin = async () => {
-    const data = authClient.signIn.social({
-      provider: "google",
-      callbackURL: process.env.NEXT_PUBLIC_FRONTEND_URL!,
-    });
-  };
+  // const handleGoogleLogin = async () => {
+  //   const data = authClient.signIn.social({
+  //     provider: "google",
+  //     callbackURL: process.env.NEXT_PUBLIC_FRONTEND_URL!,
+  //   });
+  // };
 
   const form = useForm({
     defaultValues: {
@@ -185,14 +185,14 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
           Register
         </Button>
 
-        <Button
+        {/* <Button
           onClick={handleGoogleLogin}
           variant="outline"
           type="button"
           className="w-full md:w-full cursor-pointer"
         >
           Continue with Google
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );
