@@ -47,7 +47,7 @@ const HomeBanner = () => {
             opacity: [0.3, 0.5, 0.3],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-96 h-96 bg-brand-300/30 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-96 h-96 bg-brand-500/20 dark:bg-brand-600/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -55,7 +55,7 @@ const HomeBanner = () => {
             opacity: [0.2, 0.4, 0.2],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-brand-400/20 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-brand-400/15 dark:bg-brand-500/15 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -63,7 +63,7 @@ const HomeBanner = () => {
             opacity: [0.2, 0.3, 0.2],
           }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-200/20 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-300/10 dark:bg-brand-400/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -81,7 +81,7 @@ const HomeBanner = () => {
           >
             {/* Badge */}
             <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-brand-200 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm rounded-full border border-brand-200 shadow-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500" />
@@ -149,7 +149,7 @@ const HomeBanner = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-base px-8 py-6 h-auto hover:bg-brand-50 hover:text-brand-600 hover:border-brand-300 border-2 border-border bg-white/80 backdrop-blur-sm rounded-xl transition-all duration-300"
+                  className="text-base px-8 py-6 h-auto hover:bg-brand-50 hover:text-brand-600 hover:border-brand-300 border-2 border-border bg-card/80 backdrop-blur-sm rounded-xl transition-all duration-300"
                 >
                   <Utensils className="mr-2 h-5 w-5" />
                   Explore Menu
@@ -168,7 +168,7 @@ const HomeBanner = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.3 }}
-                  className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/60 backdrop-blur-sm border border-border/50 hover:bg-white/80 transition-colors duration-300"
+                  className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-card/60 backdrop-blur-sm border border-border/50 hover:bg-card/80 transition-colors duration-300"
                 >
                   <div className="p-2 rounded-xl bg-brand-100 dark:bg-brand-900/30">
                     <stat.icon className={`h-4 w-4 ${stat.color}`} />
@@ -198,30 +198,30 @@ const HomeBanner = () => {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 rounded-full border-2 border-dashed border-brand-300/50"
+                  className="absolute inset-0 rounded-full border-2 border-dashed border-brand-400/40 dark:border-brand-600/30"
                 />
                 
                 {/* Middle Ring */}
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-8 rounded-full border-2 border-dashed border-brand-400/40"
+                  className="absolute inset-8 rounded-full border-2 border-dashed border-brand-500/40 dark:border-brand-500/30"
                 />
                 
                 {/* Inner Ring */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-16 rounded-full border-2 border-dashed border-brand-500/30"
+                  className="absolute inset-16 rounded-full border-2 border-dashed border-brand-600/30 dark:border-brand-400/30"
                 />
 
                 {/* Center Content */}
-                <div className="absolute inset-24 rounded-3xl bg-gradient-to-br from-white to-brand-50 shadow-2xl shadow-brand-500/20 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-24 rounded-3xl bg-gradient-to-br from-card to-brand-50 dark:from-card dark:to-brand-900/30 shadow-2xl shadow-brand-500/20 flex items-center justify-center overflow-hidden">
                   <div className="text-center space-y-4 p-8">
                     <motion.div
                       animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      className="w-28 h-28 mx-auto bg-gradient-to-br from-brand-100 to-brand-200 rounded-3xl flex items-center justify-center shadow-lg"
+                      className="w-28 h-28 mx-auto bg-gradient-to-br from-brand-100 to-brand-200 dark:from-brand-800 dark:to-brand-700 rounded-3xl flex items-center justify-center shadow-lg"
                     >
                       <span className="text-6xl">🍔</span>
                     </motion.div>
@@ -236,7 +236,7 @@ const HomeBanner = () => {
                   </div>
                   
                   {/* Shimmer Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-shimmer" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-card/60 dark:via-white/10 to-transparent -translate-x-full animate-shimmer" />
                 </div>
               </div>
 
@@ -244,9 +244,9 @@ const HomeBanner = () => {
               <motion.div
                 animate={{ y: [-10, 10, -10], rotate: [-2, 2, -2] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 right-4 bg-white/90 backdrop-blur-md shadow-xl rounded-2xl border border-border/50 p-4 flex items-center gap-3 hover-lift"
+                className="absolute top-4 right-4 bg-card/90 backdrop-blur-md shadow-xl rounded-2xl border border-border/50 p-4 flex items-center gap-3 hover-lift"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/40 dark:to-red-800/40 flex items-center justify-center text-2xl">
                   🍕
                 </div>
                 <div>
@@ -256,7 +256,7 @@ const HomeBanner = () => {
                     15 min away
                   </div>
                 </div>
-                <div className="ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                <div className="ml-2 px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 text-xs font-medium rounded-full">
                   Open
                 </div>
               </motion.div>
@@ -264,9 +264,9 @@ const HomeBanner = () => {
               <motion.div
                 animate={{ y: [-10, 10, -10], rotate: [-2, 2, -2] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute bottom-16 left-0 bg-white/90 backdrop-blur-md shadow-xl rounded-2xl border border-border/50 p-4 flex items-center gap-3 hover-lift"
+                className="absolute bottom-16 left-0 bg-card/90 backdrop-blur-md shadow-xl rounded-2xl border border-border/50 p-4 flex items-center gap-3 hover-lift"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40 flex items-center justify-center text-2xl">
                   🥗
                 </div>
                 <div>
@@ -287,9 +287,9 @@ const HomeBanner = () => {
               >
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs">🍜</div>
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs">🍱</div>
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs">🥡</div>
+                    <div className="w-8 h-8 rounded-full bg-card/20 flex items-center justify-center text-xs">🍜</div>
+                    <div className="w-8 h-8 rounded-full bg-card/20 flex items-center justify-center text-xs">🍱</div>
+                    <div className="w-8 h-8 rounded-full bg-card/20 flex items-center justify-center text-xs">🥡</div>
                   </div>
                   <div className="text-sm font-medium">
                     <p>2.5k+</p>

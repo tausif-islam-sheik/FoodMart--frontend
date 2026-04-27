@@ -151,9 +151,9 @@ function ProviderCard({ provider }: { provider: Provider }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0">
+      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0">
         {/* Image/Logo Container */}
-        <div className="relative h-44 overflow-hidden bg-white">
+        <div className="relative h-44 overflow-hidden bg-card">
           <motion.div
             animate={{ scale: isHovered ? 1.05 : 1 }}
             transition={{ duration: 0.5 }}
@@ -168,7 +168,7 @@ function ProviderCard({ provider }: { provider: Provider }) {
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-2xl bg-white shadow-md flex items-center justify-center text-4xl">
+                <div className="w-20 h-20 rounded-2xl bg-card shadow-md flex items-center justify-center text-4xl">
                   🍽️
                 </div>
               </div>

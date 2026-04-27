@@ -227,7 +227,7 @@ function CategoryCard({ category, index }: { category: CategoryWithCount; index:
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/meals?category=${category.id}`}>
-        <Card className="group relative overflow-hidden rounded-2xl border-0 bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0 cursor-pointer">
+        <Card className="group relative overflow-hidden rounded-2xl border-0 bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0 cursor-pointer">
           {/* Gradient Background */}
           <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
           

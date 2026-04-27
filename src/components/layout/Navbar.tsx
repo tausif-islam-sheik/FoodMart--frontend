@@ -104,23 +104,16 @@ const Navbar = () => {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-lg border-b border-border/50"
-          : "bg-background border-b border-border/30"
+          ? "bg-card/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border"
+          : "bg-background border-b border-border/30 dark:bg-[#1e1b19]"
       }`}
     >
       <nav className="max-w-7xl mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: -5 }}
-            transition={{ type: "spring", stiffness: 400 }}
-            className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center shadow-brand"
-          >
-            <ShoppingCart className="w-5 h-5 text-white" />
-          </motion.div>
-          <span className="text-2xl font-bold">
+          <span className="text-[1.75rem] italic font-sans">
             <span className="text-foreground">Food</span>
-            <span className="gradient-text">Mart</span>
+            <span className="font-bold text-brand-600">Mart</span>
           </span>
         </Link>
 
@@ -140,15 +133,15 @@ const Navbar = () => {
                   href={item.href}
                   className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full ${
                     isActive
-                      ? "text-brand-600 bg-brand-50 dark:bg-brand-500/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/20"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-muted/50"
                   }`}
                 >
                   {item.name}
                   {isActive && (
                     <motion.div
                       layoutId="navbar-active"
-                      className="absolute inset-0 bg-brand-50 dark:bg-brand-500/10 rounded-full -z-10"
+                      className="absolute inset-0 bg-brand-50 dark:bg-brand-500/20 rounded-full -z-10"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -196,23 +189,14 @@ const Navbar = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="flex items-center gap-2"
               >
                 <Button
-                  variant="ghost"
                   size="sm"
                   asChild
-                  className="text-muted-foreground hover:text-foreground"
+                  className="gap-2 gradient-brand hover:opacity-90 text-white shadow-brand hover:shadow-brand-lg transition-all rounded-lg px-5"
                 >
-                  <Link href="/login">Sign In</Link>
-                </Button>
-                <Button
-                  size="sm"
-                  asChild
-                  className="gap-2 gradient-brand hover:opacity-90 text-white shadow-brand hover:shadow-brand-lg transition-all"
-                >
-                  <Link href="/register">
-                    Get Started
+                  <Link href="/login">
+                    Sign In
                     <ChevronRight className="w-4 h-4" />
                   </Link>
                 </Button>
@@ -266,35 +250,34 @@ const Navbar = () => {
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center">
                     <ShoppingCart className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-xl font-bold">
-                    Food<span className="gradient-text">Mart</span>
+                  <span className="text-xl italic font-sans">
+                    <span className="text-foreground">Food</span>
+                    <span className="font-bold text-brand-600">Mart</span>
                   </span>
                 </SheetTitle>
               </SheetHeader>
-
-              <div className="flex-1 overflow-y-auto py-6 px-4">
-                <nav className="flex flex-col gap-1">
-                  {navItems.map((item, index) => {
-                    const isActive = pathname === item.href;
-                    return (
-                      <SheetClose key={item.name} asChild>
-                        <Link
-                          href={item.href}
-                          className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
-                            isActive
-                              ? "bg-brand-50 text-brand-600 dark:bg-brand-500/10"
-                              : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                          }`}
-                        >
-                          {item.name}
-                          {isActive && (
-                            <motion.div
-                              layoutId="mobile-active"
-                              className="w-1.5 h-1.5 rounded-full bg-brand-500"
-                            />
-                          )}
-                        </Link>
-                      </SheetClose>
+              <nav className="flex flex-col gap-1">
+                {navItems.map((item, index) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <SheetClose key={item.name} asChild>
+                      <Link
+                        href={item.href}
+                        className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
+                          isActive
+                            ? "bg-brand-50 text-brand-600 dark:bg-brand-500/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        {item.name}
+                        {isActive && (
+                          <motion.div
+                            layoutId="mobile-active"
+                            className="w-1.5 h-1.5 rounded-full bg-brand-500"
+                          />
+                        )}
+                      </Link>
+                    </SheetClose>
                     );
                   })}
                 </nav>
@@ -342,7 +325,6 @@ const Navbar = () => {
                       </SheetClose>
                     </div>
                   )}
-                </div>
               </div>
             </SheetContent>
           </Sheet>

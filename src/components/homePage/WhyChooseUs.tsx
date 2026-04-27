@@ -74,7 +74,12 @@ export default function WhyChooseUs() {
             Our Promise
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Choose <span className="gradient-text">FoodMart</span>?
+            Why Choose{" "}
+            <span className="italic font-sans">
+              <span className="font-normal text-foreground">Food</span>
+              <span className="font-bold text-brand-600">Mart </span>
+            </span>
+            ?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We make food ordering simple, secure, and convenient for everyone.
@@ -108,7 +113,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 h-full">
+      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 h-full">
         {/* Hover gradient background */}
         <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
         

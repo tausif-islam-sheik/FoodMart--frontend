@@ -184,7 +184,7 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0">
+      <Card className="group relative overflow-hidden rounded-2xl border-0 bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0">
         {/* Image Container */}
         <div className="relative h-52 overflow-hidden">
           {meal.image ? (
@@ -211,7 +211,7 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
           
           {/* Badges */}
           <div className="absolute top-3 left-3 flex gap-2">
-            <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-semibold rounded-lg shadow-sm">
+            <span className="px-2 py-1 bg-card/90 backdrop-blur-sm text-xs font-semibold rounded-lg shadow-sm">
               New
             </span>
           </div>
@@ -222,7 +222,7 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
               e.preventDefault();
               setIsLiked(!isLiked);
             }}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-white transition-colors"
+            className="absolute top-3 right-3 p-2 rounded-full bg-card/90 backdrop-blur-sm shadow-md hover:bg-card transition-colors"
           >
             <Heart
               className={`w-4 h-4 transition-colors ${
@@ -238,7 +238,7 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
             transition={{ duration: 0.3 }}
             className="absolute bottom-3 left-3 right-3"
           >
-            <button className="w-full py-2.5 bg-white text-foreground font-medium rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-brand-50 transition-colors">
+            <button className="w-full py-2.5 bg-card text-foreground font-medium rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-brand-50 transition-colors">
               <Plus className="w-4 h-4" />
               Quick Add
             </button>

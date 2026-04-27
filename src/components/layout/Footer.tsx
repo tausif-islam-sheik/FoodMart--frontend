@@ -51,8 +51,8 @@ export default function Footer() {
             {/* Brand Column */}
             <div className="col-span-2">
               <Link href="/" className="inline-block mb-4">
-                <span className="text-2xl">
-                  <i className="font-serif text-foreground">Food</i>
+                <span className="text-[1.75rem] italic font-sans">
+                  <span className="text-foreground">Food</span>
                   <span className="font-bold text-brand-600">Mart</span>
                 </span>
               </Link>
