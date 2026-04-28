@@ -37,11 +37,11 @@ const ProviderDetails = async ({
   return (
     <div className="min-h-screen bg-background">
       {/* Provider Hero Section */}
-      <div className="bg-linear-to-br from-brand-50 via-orange-50/50 to-background border-b border-border">
+      <div className="bg-linear-to-br from-brand-50/50 via-orange-50/30 to-background dark:from-brand-950/30 dark:via-orange-950/20 border-b border-border">
         <div className="container mx-auto px-4 py-8 sm:py-12">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
             {/* Provider Image */}
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full overflow-hidden shadow-xl ring-4 ring-white bg-white shrink-0">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full overflow-hidden shadow-xl ring-4 ring-background bg-background shrink-0">
               {provider.logo ? (
                 <Image
                   src={provider.logo}
@@ -74,7 +74,7 @@ const ProviderDetails = async ({
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
                   {provider.restaurantName}
                 </h1>
-                <Badge className="w-fit mx-auto md:mx-0 bg-green-100 text-green-700 hover:bg-green-100 border-0">
+                <Badge className="w-fit mx-auto md:mx-0 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/30 border-0">
                   <CheckCircle2 className="w-3 h-3 mr-1" />
                   Verified
                 </Badge>
@@ -88,16 +88,16 @@ const ProviderDetails = async ({
 
               {/* Quick Stats */}
               <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 mb-4">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 rounded-full text-sm text-muted-foreground border border-border/50">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-background/80 dark:bg-muted/50 rounded-full text-sm text-muted-foreground border border-border/50">
                   <Utensils className="w-4 h-4 text-brand-600" />
                   <span>{mealCount} {mealCount === 1 ? "Meal" : "Meals"}</span>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 rounded-full text-sm text-muted-foreground border border-border/50">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-background/80 dark:bg-muted/50 rounded-full text-sm text-muted-foreground border border-border/50">
                   <Store className="w-4 h-4 text-brand-600" />
                   <span>{categoryCount} {categoryCount === 1 ? "Category" : "Categories"}</span>
                 </div>
                 {user && (
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 rounded-full text-sm text-muted-foreground border border-border/50">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-background/80 dark:bg-muted/50 rounded-full text-sm text-muted-foreground border border-border/50">
                     <Calendar className="w-4 h-4 text-brand-600" />
                     <span>Partner since {(user as any)?.createdAt ? new Date((user as any).createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : "2024"}</span>
                   </div>
@@ -122,8 +122,8 @@ const ProviderDetails = async ({
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-brand-100 flex items-center justify-center shrink-0">
-                      <MapPin className="w-4 h-4 text-brand-600" />
+                    <div className="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center shrink-0">
+                      <MapPin className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground uppercase tracking-wider">Address</p>
@@ -132,8 +132,8 @@ const ProviderDetails = async ({
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-brand-100 flex items-center justify-center shrink-0">
-                      <Phone className="w-4 h-4 text-brand-600" />
+                    <div className="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center shrink-0">
+                      <Phone className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground uppercase tracking-wider">Phone</p>
@@ -143,8 +143,8 @@ const ProviderDetails = async ({
 
                   {user && (
                     <div className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-brand-100 flex items-center justify-center shrink-0">
-                        <User className="w-4 h-4 text-brand-600" />
+                      <div className="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center shrink-0">
+                        <User className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground uppercase tracking-wider">Owner</p>

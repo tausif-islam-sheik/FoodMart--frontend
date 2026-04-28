@@ -287,7 +287,7 @@ const MealsDetails = async ({
 
         {/* Reviews Section */}
         <div className="mt-6 sm:mt-8 lg:mt-10 mx-4 lg:mx-8">
-          <div className="bg-white rounded-xl border border-border p-3 sm:p-5 lg:p-6">
+          <div className="bg-card rounded-xl border border-border p-3 sm:p-5 lg:p-6">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-lg sm:text-xl font-bold text-foreground">Customer Reviews</h2>
@@ -296,7 +296,7 @@ const MealsDetails = async ({
                 </p>
               </div>
               {averageRating && (
-                <div className="flex items-center gap-1 px-3 py-1.5 bg-yellow-50 rounded-lg">
+                <div className="flex items-center gap-1 px-3 py-1.5 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                   <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
                   <span className="font-semibold text-sm">{averageRating}</span>
                 </div>
@@ -316,7 +316,7 @@ const MealsDetails = async ({
                           <span className="font-medium text-sm">{review.customer?.name || 'Anonymous'}</span>
                           <div className="flex items-center gap-0.5">
                             {[...Array(5)].map((_, i) => (
-                              <Star key={i} className={`w-3 h-3 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                              <Star key={i} className={`w-3 h-3 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`} />
                             ))}
                           </div>
                         </div>

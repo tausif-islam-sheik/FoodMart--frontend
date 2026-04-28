@@ -9,6 +9,14 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -16,7 +24,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { ModeToggle } from "./MoodToggle";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart, LogOut, User, ChevronRight } from "lucide-react";
+import { Menu, X, ShoppingCart, LogOut, User, ChevronRight, LayoutDashboard, Settings } from "lucide-react";
 
 interface User {
   id: string;
@@ -81,21 +89,7 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  const dashboardLink = userInfo
-    ? {
-        name: "Dashboard",
-        href:
-          userInfo.role === "ADMIN"
-            ? "/dashboard/admin"
-            : userInfo.role === "PROVIDER"
-              ? "/dashboard/provider"
-              : "/dashboard/customer",
-      }
-    : null;
-
-  const navItems = dashboardLink
-    ? [...baseNavItems, dashboardLink]
-    : baseNavItems;
+  const navItems = baseNavItems;
 
   return (
     <motion.header
@@ -164,24 +158,77 @@ const Navbar = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="flex items-center gap-3"
               >
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-sm font-medium max-w-[100px] truncate">
-                    {userInfo.name}
-                  </span>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSignOut}
-                  disabled={loading}
-                  className="gap-2 border-destructive/30 hover:bg-destructive/10 hover:text-destructive"
-                >
-                  <LogOut className="w-4 h-4" />
-                  {loading ? "..." : "Logout"}
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex items-center gap-2 px-3 py-1.5 h-auto rounded-full bg-muted hover:bg-muted/80"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center">
+                        {userInfo.image ? (
+                          <img
+                            src={userInfo.image}
+                            alt={userInfo.name}
+                            className="w-8 h-8 rounded-full object-cover"
+                          />
+                        ) : (
+                          <User className="w-4 h-4 text-white" />
+                        )}
+                      </div>
+                      <span className="text-sm font-medium max-w-[100px] truncate hidden sm:inline">
+                        {userInfo.name}
+                      </span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium">{userInfo.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{userInfo.email}</p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href={
+                          userInfo.role === "ADMIN"
+                            ? "/dashboard/admin"
+                            : userInfo.role === "PROVIDER"
+                              ? "/dashboard/provider"
+                              : "/dashboard/customer"
+                        }
+                        className="cursor-pointer flex items-center gap-2"
+                      >
+                        <LayoutDashboard className="w-4 h-4" />
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href={
+                          userInfo.role === "ADMIN"
+                            ? "/dashboard/admin/profile"
+                            : userInfo.role === "PROVIDER"
+                              ? "/dashboard/provider/profile"
+                              : "/dashboard/customer/profile"
+                        }
+                        className="cursor-pointer flex items-center gap-2"
+                      >
+                        <Settings className="w-4 h-4" />
+                        Profile Settings
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      onClick={handleSignOut}
+                      disabled={loading}
+                      className="cursor-pointer text-destructive focus:text-destructive flex items-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      {loading ? "Signing out..." : "Logout"}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </motion.div>
             ) : (
               <motion.div

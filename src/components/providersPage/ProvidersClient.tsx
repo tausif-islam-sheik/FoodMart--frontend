@@ -79,7 +79,7 @@ export default function ProvidersClient({
               setCurrentPage(1);
             }}
           >
-            <SelectTrigger className="w-48 sm:w-56 h-10 bg-white border-border/60 hover:border-brand-300 transition-colors">
+            <SelectTrigger className="w-48 sm:w-56 h-10 bg-background border-border/60 hover:border-brand-300 transition-colors">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>

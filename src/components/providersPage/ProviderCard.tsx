@@ -19,7 +19,7 @@ const ProviderCard = ({ provider }: ProviderCardProps) => {
   const mealCount = provider.meals?.length || 0;
 
   return (
-    <Card className="group overflow-hidden border-border/50 hover:border-brand-200 hover:shadow-lg transition-all duration-300 bg-white p-0">
+    <Card className="group overflow-hidden border-border/50 hover:border-brand-200 hover:shadow-lg transition-all duration-300 bg-card p-0">
       {/* Image Container - Full bleed to edges */}
       <div className="relative w-full h-44 sm:h-48 overflow-hidden">
         {provider.logo ? (
@@ -42,7 +42,7 @@ const ProviderCard = ({ provider }: ProviderCardProps) => {
 
         {/* Meal Count Badge */}
         <div className="absolute top-3 right-3">
-          <Badge className="bg-white/95 text-foreground hover:bg-white border-0 shadow-sm">
+          <Badge className="bg-background/95 text-foreground hover:bg-background border border-border/50 shadow-sm">
             <Utensils className="w-3 h-3 mr-1 text-brand-600" />
             {mealCount} {mealCount === 1 ? "Meal" : "Meals"}
           </Badge>

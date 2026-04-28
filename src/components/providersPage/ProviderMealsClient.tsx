@@ -51,7 +51,7 @@ export default function ProviderMealsClient({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {paginatedMeals.length > 0 ? (
           paginatedMeals.map((meal: any) => (
-            <Card key={meal.id} className="group overflow-hidden border-border/50 hover:border-brand-200 hover:shadow-lg transition-all duration-300 bg-white p-0">
+            <Card key={meal.id} className="group overflow-hidden border-border/50 hover:border-brand-200 hover:shadow-lg transition-all duration-300 bg-card p-0">
               {/* Image Container */}
               <div className="relative w-full h-40 sm:h-44 overflow-hidden">
                 {meal.image ? (
@@ -75,7 +75,7 @@ export default function ProviderMealsClient({
                 {/* Category Badge */}
                 {meal.category && (
                   <div className="absolute top-3 left-3">
-                    <Badge className="bg-white/95 text-foreground hover:bg-white border-0 shadow-sm text-xs">
+                    <Badge className="bg-background/95 text-foreground hover:bg-background border border-border/50 shadow-sm text-xs">
                       {meal.category.name}
                     </Badge>
                   </div>
@@ -83,7 +83,7 @@ export default function ProviderMealsClient({
 
                 {/* Price Badge */}
                 <div className="absolute bottom-3 right-3">
-                  <div className="flex items-center gap-1 px-2.5 py-1 bg-brand-600 text-white rounded-lg text-sm font-semibold shadow-md">
+                  <div className="flex items-center gap-1 px-2.5 py-1 bg-brand-600 text-primary-foreground rounded-lg text-sm font-semibold shadow-md">
                     <span>৳</span>
                     <span>{meal.price}</span>
                   </div>
