@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -10,7 +11,7 @@ import {
 import { useMemo, useState } from "react";
 import Pagination from "./Pagination";
 import ProviderCard from "./ProviderCard";
-
+import { Filter, Store, SearchX } from "lucide-react";
 
 interface ProvidersClientProps {
   providers: any[];
@@ -24,7 +25,7 @@ export default function ProvidersClient({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const perPage = 6;
+  const perPage = 8;
 
   const filteredProviders = useMemo(() => {
     if (selectedCategory === "all") return providers;
@@ -42,38 +43,99 @@ export default function ProvidersClient({
     return filteredProviders.slice(start, start + perPage);
   }, [filteredProviders, currentPage]);
 
+  const selectedCategoryName = selectedCategory === "all"
+    ? "All Categories"
+    : categories.find(c => c.id === selectedCategory)?.name || "All Categories";
+
   return (
     <div className="space-y-6">
-      <Select
-        value={selectedCategory}
-        onValueChange={(value) => {
-          setSelectedCategory(value);
-          setCurrentPage(1);
-        }}
-      >
-        <SelectTrigger className="w-60 mb-6">
-          <SelectValue placeholder="All Categories" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Categories</SelectItem>
-          {categories.map((cat) => (
-            <SelectItem key={cat.id} value={cat.id}>
-              {cat.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      {/* Filter Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-border">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-brand-100 flex items-center justify-center">
+            <Store className="w-4 h-4 text-brand-600" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold text-foreground">
+              {filteredProviders.length} {filteredProviders.length === 1 ? "Provider" : "Providers"}
+            </h2>
+            <p className="text-xs text-muted-foreground">
+              {filteredProviders.length > perPage
+                ? `Showing ${(currentPage - 1) * perPage + 1}-${Math.min(currentPage * perPage, filteredProviders.length)} of ${filteredProviders.length}`
+                : `Showing all ${filteredProviders.length} providers`}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Filter className="w-4 h-4" />
+            <span className="hidden sm:inline">Filter by:</span>
+          </div>
+          <Select
+            value={selectedCategory}
+            onValueChange={(value) => {
+              setSelectedCategory(value);
+              setCurrentPage(1);
+            }}
+          >
+            <SelectTrigger className="w-48 sm:w-56 h-10 bg-white border-border/60 hover:border-brand-300 transition-colors">
+              <SelectValue placeholder="All Categories" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Categories</SelectItem>
+              {categories.map((cat) => (
+                <SelectItem key={cat.id} value={cat.id}>
+                  {cat.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      {/* Active Filter Badge */}
+      {selectedCategory !== "all" && (
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-muted-foreground">Active filter:</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-sm font-medium">
+            {selectedCategoryName}
+            <button
+              onClick={() => setSelectedCategory("all")}
+              className="w-4 h-4 rounded-full bg-brand-200/50 hover:bg-brand-200 flex items-center justify-center transition-colors"
+            >
+              <span className="text-xs">×</span>
+            </button>
+          </span>
+        </div>
+      )}
 
       {/* Providers Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
         {paginatedProviders.length > 0 ? (
           paginatedProviders.map((provider: any) => (
             <ProviderCard key={provider.id} provider={provider} />
           ))
         ) : (
-          <p className="text-gray-500 col-span-full text-center">
-            No providers found.
-          </p>
+          <div className="col-span-full py-12 sm:py-16">
+            <div className="text-center max-w-md mx-auto">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
+                <SearchX className="w-8 h-8 sm:w-10 sm:h-10 text-muted-foreground" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                No providers found
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                No restaurants match the selected category. Try selecting a different category or check back later.
+              </p>
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className="px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors text-sm font-medium"
+              >
+                View All Providers
+              </button>
+            </div>
+          </div>
         )}
       </div>
 
@@ -88,10 +150,6 @@ export default function ProvidersClient({
     </div>
   );
 }
-
-
-
-
 
 
 

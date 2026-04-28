@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MealSlider from "@/components/mealsPage/MealSlider";
 import OrderButton from "@/components/mealsPage/OrderButton";
-import ReviewSection from "@/components/mealsPage/ReviewSection";
 import { adminService } from "@/services/admin.service";
 import { mealService } from "@/services/meal.service";
 import { userService } from "@/services/user.service";
