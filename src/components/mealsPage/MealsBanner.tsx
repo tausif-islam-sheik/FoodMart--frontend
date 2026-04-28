@@ -21,10 +21,10 @@ const MealsBanner = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-3xl rounded-2xl bg-white/85 px-8 py-10 text-center shadow-xl backdrop-blur-sm md:px-12 md:py-14"
+          className="max-w-3xl rounded-2xl bg-card/95 px-8 py-10 text-center shadow-xl backdrop-blur-md md:px-12 md:py-14 border border-border/50"
         >
-          <h1 className="mb-6 text-4xl font-bold uppercase tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Our Delicious Meals
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            Our <span className="text-brand-600">Delicious</span> Meals
           </h1>
 
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -34,13 +34,13 @@ const MealsBanner = () => {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href={"/meals"}>
-              <button className="rounded-lg px-8 py-3 font-semibold text-primary-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl bg-orange-500 cursor-pointer">
+            <Link href="#meals">
+              <button className="rounded-lg px-8 py-3 font-semibold text-white shadow-lg shadow-brand-500/25 transition-all duration-300 hover:scale-105 hover:shadow-xl bg-brand-500 hover:bg-brand-600 cursor-pointer">
                 Explore Menu
               </button>
             </Link>
-            <Link href={"/meals"}>
-              <button className="rounded-lg border-2 border-orange-200 bg-card/80 px-8 py-3 font-semibold backdrop-blur-sm transition-all duration-300 hover:border-primary hover:text-primary text-orange-500 cursor-pointer">
+            <Link href="#meals">
+              <button className="rounded-lg border-2 border-brand-200 bg-card/80 px-8 py-3 font-semibold backdrop-blur-sm transition-all duration-300 hover:border-brand-400 hover:text-brand-600 text-brand-500 cursor-pointer">
                 Order Now
               </button>
             </Link>
