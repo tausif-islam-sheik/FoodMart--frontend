@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { providerService } from "@/services/provider.service";
+import { Store, MapPin, Phone, Building2, Save } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 interface Props {
   profile: any | null;
@@ -107,86 +110,134 @@ const ProviderProfileClient = ({ profile }: Props) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <Card className="shadow-sm">
-        <CardHeader>
-          <CardTitle>
-            {isEdit ? "Your Provider Profile" : "Create Provider Profile"}
-          </CardTitle>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="max-w-2xl mx-auto"
+    >
+      {/* Header */}
+      <div className="mb-6 text-center">
+        <h1 className="text-2xl lg:text-3xl font-bold text-foreground flex items-center justify-center gap-2">
+          <Building2 className="w-7 h-7 text-orange-500" />
+          {isEdit ? "Restaurant Profile" : "Create Restaurant Profile"}
+        </h1>
+        <p className="text-muted-foreground text-sm mt-1">
+          {isEdit 
+            ? "Manage your restaurant information and settings" 
+            : "Set up your restaurant profile to start receiving orders"}
+        </p>
+      </div>
+
+      <Card className="shadow-lg border-0 bg-white dark:bg-card overflow-hidden">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-lg">Restaurant Information</CardTitle>
+          <CardDescription>Update your restaurant details below</CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-4">
-          {/* Restaurant Name */}
-          <div>
-            <Label className="mb-1">Restaurant Name</Label>
-            <Input
-              name="restaurantName"
-              value={form.restaurantName}
-              onChange={handleChange}
-              placeholder="e.g. FoodMart Kitchen"
-            />
-          </div>
-
-          {/* Address */}
-          <div>
-            <Label className="mb-1">Address</Label>
-            <Input
-              name="address"
-              value={form.address}
-              onChange={handleChange}
-              placeholder="Full address"
-            />
-          </div>
-
-          {/* Phone */}
-          <div>
-            <Label className="mb-1">Phone</Label>
-            <Input
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="01XXXXXXXXX"
-            />
-          </div>
-
-          {/* Logo Upload */}
-          <div>
-            <Label className="mb-2">Logo</Label>
-
-            {preview && (
-              <div className="relative h-24 w-24 mb-2">
-                <Image
-                  src={preview}
-                  alt="Logo Preview"
-                  fill
-                  className="object-cover rounded-md border"
-                  unoptimized
+        <CardContent className="pt-6 space-y-6">
+          {/* Logo Upload Section */}
+          <div className="flex flex-col sm:flex-row items-start gap-4 pb-4 border-b">
+            <div className="relative">
+              <div className="w-24 h-24 rounded-xl overflow-hidden border-2 border-dashed border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center">
+                {preview ? (
+                  <Image
+                    src={preview}
+                    alt="Logo Preview"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                ) : (
+                  <Store className="w-10 h-10 text-orange-300" />
+                )}
+              </div>
+            </div>
+            <div className="flex-1">
+              <Label className="text-sm font-medium mb-2 block">Restaurant Logo</Label>
+              <div className="relative">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="cursor-pointer h-11 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100"
                 />
               </div>
-            )}
-
-            <Input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="cursor-pointer"
-            />
+              <p className="text-xs text-muted-foreground mt-2">
+                Recommended: Square image, at least 400x400px
+              </p>
+            </div>
           </div>
 
-          <Button
-            className="w-full mt-4 bg-orange-500 hover:bg-orange-600 cursor-pointer"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
-            {loading
-              ? "Processing..."
-              : isEdit
-                ? "Update Profile"
-                : "Create Profile"}
-          </Button>
+          {/* Form Fields */}
+          <div className="space-y-5">
+            {/* Restaurant Name */}
+            <div className="space-y-2">
+              <Label htmlFor="restaurantName" className="text-sm font-medium flex items-center gap-2">
+                <Store className="w-4 h-4 text-orange-500" />
+                Restaurant Name
+              </Label>
+              <Input
+                id="restaurantName"
+                name="restaurantName"
+                value={form.restaurantName}
+                onChange={handleChange}
+                placeholder="e.g. FoodMart Kitchen"
+                className="h-11"
+              />
+            </div>
+
+            {/* Address */}
+            <div className="space-y-2">
+              <Label htmlFor="address" className="text-sm font-medium flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-orange-500" />
+                Full Address
+              </Label>
+              <Input
+                id="address"
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+                placeholder="Enter complete restaurant address"
+                className="h-11"
+              />
+            </div>
+
+            {/* Phone */}
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-sm font-medium flex items-center gap-2">
+                <Phone className="w-4 h-4 text-orange-500" />
+                Contact Phone
+              </Label>
+              <Input
+                id="phone"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="01XXXXXXXXX"
+                className="h-11"
+              />
+            </div>
+          </div>
+
+          {/* Action Button */}
+          <div className="flex justify-end pt-4 border-t">
+            <Button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="bg-linear-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white px-6 h-11"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              {loading
+                ? "Saving..."
+                : isEdit
+                  ? "Save Changes"
+                  : "Create Profile"}
+            </Button>
+          </div>
         </CardContent>
       </Card>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ProviderProfileClient from "@/components/dashboard/providerDashboard/ProviderProfileClient";
 import { providerService } from "@/services/provider.service";
 import { userService } from "@/services/user.service";
@@ -22,13 +23,6 @@ const ProviderOverview = async () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl md:text-3xl font-semibold mb-1 text-center">
-        Welcome <span className="text-orange-600 font-bold"><i>{user.name}!</i></span>
-      </h1>
-      <p className="text-sm text-center text-muted-foreground mb-6 font-semibold">
-         {user.role}
-      </p>
-
       <ProviderProfileClient profile={myProfile || null} />
     </div>
   );

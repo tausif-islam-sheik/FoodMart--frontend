@@ -1,10 +1,15 @@
 "use client";
 
 import { adminService, UserData } from "@/services/admin.service";
-import { User as UserIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { User as UserIcon, Camera, Save, Shield } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 interface Props {
   user: UserData | null;
@@ -69,72 +74,107 @@ const AdminProfileClient = ({ user }: Props) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg space-y-6">
-      <h1 className="text-2xl font-bold text-center">Admin Profile</h1>
-
-      <div className="flex flex-col items-center space-y-4">
-        <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-orange-600 flex items-center justify-center bg-gray-100">
-          {form.image ? (
-            <Image
-              src={form.image}
-              alt="Profile Image"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          ) : (
-            <UserIcon size={48} className="text-gray-400" />
-          )}
-        </div>
-        <label className="cursor-pointer px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 text-sm">
-          {imageUploading ? "Uploading..." : "Change Image"}
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleImageUpload}
-            disabled={imageUploading}
-          />
-        </label>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="max-w-2xl mx-auto"
+    >
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <Shield className="w-6 h-6 text-orange-500" />
+          Admin Profile
+        </h1>
+        <p className="text-muted-foreground text-sm mt-1">
+          Manage your administrator account settings and profile information
+        </p>
       </div>
 
-      <div className="flex flex-col space-y-3">
-        <div>
-          <label className="text-sm font-medium">Name</label>
-          <input
-            type="text"
-            className="border rounded px-3 py-2 w-full mt-1"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-          />
-        </div>
+      <Card className="shadow-lg border-0 bg-white dark:bg-card overflow-hidden">
+        {/* Profile Image Section */}
+        <CardHeader className="pb-0">
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <div className="relative">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-100 dark:border-orange-900/30 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 flex items-center justify-center shadow-inner">
+                {form.image ? (
+                  <Image
+                    src={form.image}
+                    alt="Profile Image"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                ) : (
+                  <UserIcon size={56} className="text-orange-300" />
+                )}
+              </div>
+              <label className="absolute -bottom-1 -right-1 cursor-pointer w-10 h-10 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors">
+                <Camera size={18} />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                  disabled={imageUploading}
+                />
+              </label>
+            </div>
+            <div className="text-center sm:text-left">
+              <CardTitle className="text-xl">{form.name || "Admin User"}</CardTitle>
+              <CardDescription className="flex items-center gap-2 justify-center sm:justify-start mt-1">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-medium">
+                  <Shield className="w-3 h-3" />
+                  {user.role}
+                </span>
+                <span className="text-muted-foreground">{form.email}</span>
+              </CardDescription>
+            </div>
+          </div>
+        </CardHeader>
 
-        <div>
-          <label className="text-sm font-medium">Email</label>
-          <input
-            type="email"
-            className="border rounded px-3 py-2 w-full mt-1"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-          />
-        </div>
-      </div>
+        <CardContent className="pt-6 space-y-6">
+          {/* Form Fields */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
+              <Input
+                id="name"
+                type="text"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="Enter your name"
+                className="h-11"
+              />
+            </div>
 
-      <div className="flex justify-between items-center mt-4">
-        <span className="text-sm text-muted-foreground">
-          Role: {user.role || "CUSTOMER"}
-        </span>
-        <button
-          className={`px-4 py-2 rounded bg-orange-600 text-white hover:bg-orange-700 cursor-pointer ${
-            updating ? "opacity-70 cursor-not-allowed" : ""
-          }`}
-          onClick={handleUpdate}
-          disabled={updating || imageUploading}
-        >
-          {updating ? "Updating..." : "Update Profile"}
-        </button>
-      </div>
-    </div>
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
+              <Input
+                id="email"
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="Enter your email"
+                className="h-11"
+              />
+            </div>
+          </div>
+
+          {/* Action Button */}
+          <div className="flex justify-end pt-4 border-t">
+            <Button
+              onClick={handleUpdate}
+              disabled={updating || imageUploading}
+              className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white px-6 h-11"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              {updating ? "Saving..." : "Save Changes"}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 

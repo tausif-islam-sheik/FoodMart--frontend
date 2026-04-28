@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import CustomSpinner from "@/components/ui/CustomSpinner";
 import {
   Dialog,
   DialogContent,
@@ -161,12 +164,24 @@ const MealManagerClient = ({ userId }: Props) => {
       </div>
 
       {loadingMeals ? (
-        <p>Loading meals...</p>
+        <CustomSpinner size="lg" text="Loading meals..." className="py-20" />
       ) : meals.length === 0 ? (
-        <p>No meals found</p>
+        <Card className="border-0 shadow-md">
+          <CardContent className="flex flex-col items-center justify-center py-16 text-center">
+            <p className="text-lg font-medium text-foreground">No meals found</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Add your first meal to get started
+            </p>
+          </CardContent>
+        </Card>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {meals.map((meal) => {
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {meals.map((meal, index) => {
             const mealCategory = categories.find(
               (c) => c.id === meal.categoryId,
             );
@@ -233,7 +248,7 @@ const MealManagerClient = ({ userId }: Props) => {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       )}
 
       {/* Create/Edit Dialog */}
