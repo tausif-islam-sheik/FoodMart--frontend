@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "FoodMart is a multi-vendor food ordering web application where users can explore restaurants, browse menus, and order delicious meals online.",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.svg",
   },
 };
 
