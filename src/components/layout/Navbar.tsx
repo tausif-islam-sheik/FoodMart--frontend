@@ -105,7 +105,7 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-[1.75rem] italic font-sans">
+          <span className="text-[1.30rem] lg:text-[1.75rem] italic font-sans">
             <span className="text-foreground">Food</span>
             <span className="font-bold text-brand-600">Mart</span>
           </span>
