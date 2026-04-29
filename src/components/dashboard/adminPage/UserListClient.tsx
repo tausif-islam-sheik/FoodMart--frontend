@@ -173,11 +173,11 @@ const UserListClient = ({ users: initialUsers }: Props) => {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
                       <h3 className="font-semibold text-lg">{user.name}</h3>
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getRoleBadge(user.role)}`}>
-                        {user.role}
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getRoleBadge(user.role || "CUSTOMER")}`}>
+                        {user.role || "CUSTOMER"}
                       </span>
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getStatusBadge(user.status)}`}>
-                        {user.status}
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getStatusBadge(user.status || "ACTIVE")}`}>
+                        {user.status || "ACTIVE"}
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground flex items-center gap-1">

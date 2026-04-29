@@ -6,7 +6,7 @@ const CustomerProfile = async () => {
   const user = data?.user;
 
   return (
-    <div className="p-4">
+    <div className="w-full">
       <CustomerProfileClient user={user} />
     </div>
   );

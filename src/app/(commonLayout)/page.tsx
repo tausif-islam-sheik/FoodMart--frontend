@@ -4,6 +4,7 @@ import CategoryCards from "@/components/homePage/CategoryCards";
 import WhyChooseUs from "@/components/homePage/WhyChooseUs";
 import HowItWorks from "@/components/homePage/HowItWorks";
 import HomeBanner from "@/components/homePage/HomeBanner";
+import Testimonials from "@/components/homePage/Testimonials";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <PopularMealsProviderSection />
       </div>
       <CategoryCards />
+      <Testimonials />
       <WhyChooseUs />
     </div>
   );

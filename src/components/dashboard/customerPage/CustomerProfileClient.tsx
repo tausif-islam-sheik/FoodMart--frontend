@@ -74,29 +74,32 @@ const CustomerProfileClient = ({ user }: Props) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-2xl mx-auto"
+      className="w-full"
     >
       {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <User className="w-6 h-6 text-orange-500" />
+      <div className="my-8">
+        <h1 className="text-2xl lg:text-3xl font-bold text-foreground flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center shadow-lg shadow-orange-500/25">
+            <User className="w-5 h-5 text-white" />
+          </div>
           Customer Profile
         </h1>
-        <p className="text-muted-foreground text-sm mt-1">
+        <p className="text-muted-foreground mt-2 ml-[52px]">
           Manage your account settings and personal information
         </p>
       </div>
 
-      <Card className="shadow-lg border-0 bg-white dark:bg-card overflow-hidden">
-        {/* Profile Image Section */}
-        <CardHeader className="pb-0">
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            <div className="relative">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-100 dark:border-orange-900/30 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 flex items-center justify-center shadow-inner">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        {/* Profile Card */}
+        <Card className="xl:col-span-1 shadow-lg border-0 bg-white dark:bg-card overflow-hidden h-fit">
+          <div className="h-1.5 bg-gradient-to-r from-orange-500 to-amber-400" />
+          <CardContent className="p-6 text-center">
+            <div className="relative inline-block">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-orange-100 dark:border-orange-900/30 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 flex items-center justify-center shadow-inner mx-auto">
                 {form.image ? (
                   <Image
                     src={form.image}
@@ -120,60 +123,76 @@ const CustomerProfileClient = ({ user }: Props) => {
                 />
               </label>
             </div>
-            <div className="text-center sm:text-left">
-              <CardTitle className="text-xl">{form.name || "Customer"}</CardTitle>
-              <CardDescription className="flex items-center gap-2 justify-center sm:justify-start mt-1">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium">
-                  <User className="w-3 h-3" />
-                  {user.role}
-                </span>
-                <span className="text-muted-foreground">{form.email}</span>
-              </CardDescription>
+            <h3 className="mt-4 text-lg font-semibold">{form.name || "Customer"}</h3>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium">
+                <User className="w-3 h-3" />
+                {user.role}
+              </span>
             </div>
-          </div>
-        </CardHeader>
+            <p className="text-sm text-muted-foreground mt-2">{form.email}</p>
+          </CardContent>
+        </Card>
 
-        <CardContent className="pt-6 space-y-6">
-          {/* Form Fields */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
-              <Input
-                id="name"
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Enter your name"
-                className="h-11"
-              />
+        {/* Form Card */}
+        <Card className="xl:col-span-2 shadow-lg border-0 bg-white dark:bg-card overflow-hidden">
+          <div className="h-1 bg-gradient-to-r from-orange-500 to-amber-400" />
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg flex items-center gap-2">
+              <User className="w-5 h-5 text-orange-500" />
+              Account Information
+            </CardTitle>
+            <CardDescription>Update your personal details</CardDescription>
+          </CardHeader>
+
+          <CardContent className="pt-2 space-y-6">
+            {/* Form Fields */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-sm font-medium flex items-center gap-2">
+                  <User className="w-4 h-4 text-orange-500" />
+                  Full Name
+                </Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder="Enter your name"
+                  className="h-12 rounded-xl border-2 border-border/50 focus:border-orange-400 focus:ring-orange-400/20 transition-all"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium flex items-center gap-2">
+                  <User className="w-4 h-4 text-orange-500" />
+                  Email Address
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="Enter your email"
+                  className="h-12 rounded-xl border-2 border-border/50 focus:border-orange-400 focus:ring-orange-400/20 transition-all"
+                />
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
-              <Input
-                id="email"
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="Enter your email"
-                className="h-11"
-              />
+            {/* Action Button */}
+            <div className="flex justify-end pt-6 border-t">
+              <Button
+                onClick={handleUpdate}
+                disabled={updating || imageUploading}
+                className="h-12 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all px-8"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                {updating ? "Saving..." : "Save Changes"}
+              </Button>
             </div>
-          </div>
-
-          {/* Action Button */}
-          <div className="flex justify-end pt-4 border-t">
-            <Button
-              onClick={handleUpdate}
-              disabled={updating || imageUploading}
-              className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white px-6 h-11"
-            >
-              <Save className="w-4 h-4 mr-2" />
-              {updating ? "Saving..." : "Save Changes"}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </motion.div>
   );
 };

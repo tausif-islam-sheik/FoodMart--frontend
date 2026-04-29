@@ -6,7 +6,7 @@ const AdminOverview = async () => {
   const user = data?.user;
 
   return (
-    <div className="p-4">
+    <div className="w-full">
       <AdminProfileClient user={user} />
     </div>
   );

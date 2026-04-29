@@ -258,7 +258,9 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
           </div>
           
           <p className="text-sm text-muted-foreground line-clamp-1">
-            {meal.provider}
+            {typeof meal.provider === "object" && meal.provider !== null
+              ? meal.provider.restaurantName || meal.provider.name || "Unknown"
+              : meal.provider || "Unknown"}
           </p>
           
           <div className="flex items-center justify-between pt-2 border-t border-border/50">
