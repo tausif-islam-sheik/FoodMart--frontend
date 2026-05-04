@@ -105,12 +105,12 @@ export default function RecentMeals() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse space-y-8">
             <div className="flex justify-between items-center">
-              <div className="h-8 w-48 bg-muted rounded-lg" />
-              <div className="h-10 w-32 bg-muted rounded-lg" />
+              <div className="h-8 w-48 bg-gray-200 dark:bg-muted rounded-lg" />
+              <div className="h-10 w-32 bg-gray-200 dark:bg-muted rounded-lg" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-80 bg-muted rounded-2xl" />
+                <div key={i} className="h-80 bg-gray-200 dark:bg-muted rounded-2xl border border-gray-300 dark:border-border" />
               ))}
             </div>
           </div>
