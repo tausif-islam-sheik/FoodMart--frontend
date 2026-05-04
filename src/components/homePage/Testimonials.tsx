@@ -102,7 +102,7 @@ export default function Testimonials() {
                 transition: { duration: 0.2 }
               }}
             >
-              <Card className="h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-card overflow-hidden group">
+              <Card className="h-full border border-border/30 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 bg-white/80 dark:bg-card/90 backdrop-blur-sm overflow-hidden group relative">
                 {/* Animated top gradient bar - smooth hover effect */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-400 origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
                 <CardContent className="p-4 relative">
@@ -111,7 +111,7 @@ export default function Testimonials() {
                     animate={{ rotate: [0, 10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, delay: index * 0.5 }}
                   >
-                    <Quote className="w-6 h-6 text-orange-200 dark:text-orange-900/30 absolute top-3 right-3" />
+                    <Quote className="w-8 h-8 text-orange-300/50 dark:text-orange-500/20 absolute top-4 right-4 transform group-hover:rotate-12 transition-transform duration-300" />
                   </motion.div>
                   
                   {/* Rating */}
@@ -195,7 +195,7 @@ export default function Testimonials() {
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
-              className="text-center p-4 bg-white dark:bg-card rounded-xl shadow-sm border border-border/50 cursor-default"
+              className="text-center p-4 bg-white/90 dark:bg-card/90 rounded-xl shadow-md border border-border/50 cursor-default hover:shadow-lg transition-shadow duration-300"
             >
               <motion.div 
                 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 mb-1"

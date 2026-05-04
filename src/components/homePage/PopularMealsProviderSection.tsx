@@ -161,12 +161,14 @@ function ProviderCard({ provider }: { provider: Provider }) {
             className="w-full h-full"
           >
             {provider.logo ? (
-              <Image
-                src={provider.logo}
-                alt={provider.restaurantName}
-                fill
+              <div className="w-full h-full flex items-center justify-center bg-white p-4">
+                <Image
+                  src={provider.logo}
+                  alt={provider.restaurantName}
+                  fill
                 className="object-cover"
-              />
+                />
+              </div>
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
                 <div className="w-20 h-20 rounded-2xl bg-card shadow-md flex items-center justify-center text-4xl">

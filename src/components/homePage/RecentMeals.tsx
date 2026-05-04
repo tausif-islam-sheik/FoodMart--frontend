@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -222,11 +223,11 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
               e.preventDefault();
               setIsLiked(!isLiked);
             }}
-            className="absolute top-3 right-3 p-2 rounded-full bg-card/90 backdrop-blur-sm shadow-md hover:bg-card transition-colors"
+            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-600"
           >
             <Heart
               className={`w-4 h-4 transition-colors ${
-                isLiked ? "fill-red-500 text-red-500" : "text-gray-600"
+                isLiked ? "fill-red-500 text-red-500" : "text-gray-600 dark:text-gray-300"
               }`}
             />
           </button>
@@ -257,20 +258,21 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
             </div>
           </div>
           
-          <p className="text-sm text-muted-foreground line-clamp-1">
+          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">
             {typeof meal.provider === "object" && meal.provider !== null
               ? meal.provider.restaurantName || meal.provider.name || "Unknown"
               : meal.provider || "Unknown"}
           </p>
           
-          <div className="flex items-center justify-between pt-2 border-t border-border/50">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="w-3 h-3" />
-              {meal.deliveryTime}
+          <div className="flex items-center justify-between pt-3 border-t border-border/50">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Clock className="w-3.5 h-3.5" />
+              <span>{meal.deliveryTime}</span>
             </div>
-            <span className="text-lg font-bold gradient-text">
-              ৳{meal.price.toFixed(0)}
-            </span>
+            <div className="flex items-center gap-1 bg-brand-50 dark:bg-brand-500/10 px-2 py-1 rounded-lg">
+              <span className="text-xs text-brand-600 dark:text-brand-400 font-medium">৳</span>
+              <span className="text-lg font-bold text-brand-600 dark:text-brand-400">{meal.price.toFixed(0)}</span>
+            </div>
           </div>
         </CardContent>
       </Card>

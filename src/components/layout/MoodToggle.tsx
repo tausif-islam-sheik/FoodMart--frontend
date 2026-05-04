@@ -23,14 +23,14 @@ export function ModeToggle() {
       <motion.div
         initial={false}
         animate={{ 
-          rotate: resolvedTheme === "dark" ? 180 : 0,
+          rotate: resolvedTheme === "dark" ? 360 : 0,
           scale: 1 
         }}
         transition={{ duration: 0.3 }}
         className="relative"
       >
         <Sun className="h-5 w-5 text-amber-600 transition-all dark:hidden" />
-        <Moon className="h-5 w-5 text-indigo-500 hidden transition-all dark:block" />
+        <Moon className="h-5 w-5 text-white hidden transition-all dark:block" />
       </motion.div>
       <span className="sr-only">Toggle theme</span>
     </Button>
