@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,6 +13,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us | FoodMart - Our Story & Mission",
+  description: "Learn about FoodMart's mission to revolutionize food delivery. Discover our story, values, and commitment to connecting people with great food.",
+};
 
 const About = () => {
   const stats = [

@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import ContactForm from "@/components/contactPage/ContactForm";
 import ContactInfo from "@/components/contactPage/ContactInfo";
 import { MessageSquare } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us | FoodMart - Get in Touch",
+  description: "Have questions or feedback? Contact FoodMart's support team. We're here to help with your orders, partnerships, and inquiries.",
+};
 
 const Contact = () => {
   return (

@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Star, MapPin, Sparkles, Utensils, Flame, Truck } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,6 +32,11 @@ const itemVariants = {
 };
 
 
+// Register GSAP plugins
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 const stats = [
   { icon: Clock, value: "30", label: "min delivery", color: "text-brand-500" },
   { icon: Star, value: "4.9", label: "rating", color: "text-yellow-500" },
@@ -36,18 +44,75 @@ const stats = [
 ];
 
 const HomeBanner = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const foodShowcaseRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Parallax effect on background blobs
+      gsap.to(".blob-1", {
+        yPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      gsap.to(".blob-2", {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.5,
+        },
+      });
+
+      // Content parallax
+      gsap.to(contentRef.current, {
+        yPercent: -10,
+        opacity: 0.3,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      // Food showcase parallax (slower for depth)
+      gsap.to(foodShowcaseRef.current, {
+        yPercent: -5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 2,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
   return (
-    <section className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center">
+    <section ref={sectionRef} className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex items-center">
       {/* Animated Background */}
       <div className="absolute inset-0 gradient-hero">
-        {/* Animated blobs */}
+        {/* Animated blobs with GSAP parallax */}
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-96 h-96 bg-brand-500/20 dark:bg-brand-600/20 rounded-full blur-3xl"
+          className="blob-1 absolute top-20 left-10 w-96 h-96 bg-brand-500/20 dark:bg-brand-600/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -55,7 +120,7 @@ const HomeBanner = () => {
             opacity: [0.2, 0.4, 0.2],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-20 right-10 w-125 h-125 bg-brand-400/15 dark:bg-brand-500/15 rounded-full blur-3xl"
+          className="blob-2 absolute bottom-20 right-10 w-125 h-125 bg-brand-400/15 dark:bg-brand-500/15 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -70,7 +135,7 @@ const HomeBanner = () => {
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
@@ -95,7 +160,7 @@ const HomeBanner = () => {
 
             {/* Headline */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
+              <h1 className="text-5xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
                 Delicious Food{" "}
                 <span className="relative inline-block">
                   <span className="gradient-text">Delivered</span>
@@ -186,6 +251,7 @@ const HomeBanner = () => {
 
           {/* Right Content - Food Showcase */}
           <motion.div
+            ref={foodShowcaseRef}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}

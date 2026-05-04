@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import ProvidersClient from "@/components/providersPage/ProvidersClient";
 import { categoryService } from "@/services/category.service";
 import { providerService } from "@/services/provider.service";
 import { Store, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Restaurant Providers | FoodMart - Partner Restaurants",
+  description: "Discover verified restaurants and food providers on FoodMart. Browse menus, read reviews, and order from your favorite local restaurants.",
+};
 
 const ProvidersPage = async () => {
   const [providersRes, categoriesRes] = await Promise.all([

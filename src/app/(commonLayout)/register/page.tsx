@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { RegisterForm } from "@/components/modules/authentication/RegisterForm";
+
+export const metadata: Metadata = {
+  title: "Register | FoodMart - Create Your Account",
+  description: "Join FoodMart today! Create an account to order food, track deliveries, and enjoy exclusive offers from top restaurants.",
+};
 
 const Register = () => {
   return (
