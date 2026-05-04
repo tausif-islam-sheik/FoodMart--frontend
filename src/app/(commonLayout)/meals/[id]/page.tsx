@@ -244,13 +244,7 @@ const MealsDetails = async ({
               <div className="pt-1">
                 {meal?.isAvailable ? (
                   user?.role === "CUSTOMER" ? (
-                    <OrderButton
-                      mealId={meal.id}
-                      mealName={meal.name}
-                      mealPrice={meal.price}
-                      providerId={meal.providerId}
-                      customerId={user.id}
-                    />
+                    <OrderButton mealId={meal.id} />
                   ) : (
                     <Card className="border-brand-200 bg-brand-50/50">
                       <CardContent className="p-4 text-center">

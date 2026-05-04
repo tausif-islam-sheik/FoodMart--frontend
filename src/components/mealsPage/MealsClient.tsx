@@ -470,6 +470,16 @@ const MealsClient = ({ meals, user }: { meals: Meal[]; user: User | null }) => {
                         <ShoppingCart className="w-4 h-4" />
                       )}
                     </Button>
+
+                    {/* Details Button */}
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="rounded-lg px-3 border-border hover:bg-muted"
+                    >
+                      <Link href={`/meals/${meal.id}`}>Details</Link>
+                    </Button>
                   </div>
                 </div>
               </div>
