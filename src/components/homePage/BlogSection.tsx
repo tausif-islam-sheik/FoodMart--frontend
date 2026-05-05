@@ -80,7 +80,7 @@ export default function BlogSection() {
           </div>
 
           <Link
-            href="#"
+            href="/blog"
             className="group flex items-center gap-2 text-brand-600 hover:text-brand-700 font-medium text-sm"
           >
             View All Articles
@@ -139,7 +139,7 @@ export default function BlogSection() {
 
                 {/* Read More */}
                 <Link
-                  href="#"
+                  href={`/blog/${post.id}`}
                   className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 group/link"
                 >
                   Read More
