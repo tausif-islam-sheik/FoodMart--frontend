@@ -339,7 +339,7 @@ const MealsClient = ({ meals, user }: { meals: Meal[]; user: User | null }) => {
                   <Button
                     size="sm"
                     disabled={!meal.isAvailable}
-                    className="bg-white text-foreground hover:bg-brand-50 shadow-lg"
+                    className="bg-white text-foreground hover:bg-brand-50 shadow-lg dark:bg-card"
                     onClick={async () => {
                       if (!user) {
                         toast.error("Please login to add items to cart");

@@ -104,7 +104,7 @@ export default function ProviderMealsClient({
                   {/* Category Badge */}
                   {meal.category && (
                     <div className="absolute top-3 left-3">
-                      <Badge className="bg-white/95 text-foreground hover:bg-white border-0 shadow-md">
+                      <Badge className="bg-white/95 dark:bg-slate-900/90 text-foreground dark:text-white hover:bg-white dark:hover:bg-slate-900 border-0 shadow-md">
                         {meal.category.name}
                       </Badge>
                     </div>

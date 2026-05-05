@@ -19,7 +19,7 @@ const ProviderCard = ({ provider }: ProviderCardProps) => {
     <Link href={`/providers/${provider.id}`}>
       <Card className="group overflow-hidden border-border/50 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 bg-card p-0 cursor-pointer">
         {/* Image Container */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-4/3 overflow-hidden">
           {provider.logo ? (
             <Image
               src={provider.logo}
@@ -41,8 +41,8 @@ const ProviderCard = ({ provider }: ProviderCardProps) => {
 
           {/* Meal Count Badge */}
           <div className="absolute top-3 left-3">
-            <Badge className="bg-white/95 text-foreground hover:bg-white border-0 shadow-md">
-              <Utensils className="w-3 h-3 mr-1.5 text-brand-500" />
+            <Badge className="bg-white/95 dark:bg-slate-900/90 text-foreground dark:text-white hover:bg-white dark:hover:bg-slate-900 border-0 shadow-md">
+              <Utensils className="w-3 h-3 mr-1.5 text-brand-500 dark:text-brand-400" />
               {mealCount} {mealCount === 1 ? "Meal" : "Meals"}
             </Badge>
           </div>

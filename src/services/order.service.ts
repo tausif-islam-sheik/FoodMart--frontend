@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const BACKEND_URL = typeof window !== "undefined" ? "" : process.env.BACKEND_URL!;
 
 export interface OrderItemData {
@@ -89,6 +90,21 @@ export const orderService = {
       const data = await res.json();
       return data.success
         ? { data: true, error: null }
+        : { data: null, error: data.message || data.error };
+    } catch (err: any) {
+      return { data: null, error: err.message || "Something went wrong" };
+    }
+  },
+
+  getMyOrders: async () => {
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/orders/my-orders`, {
+        cache: "no-store",
+        credentials: "include",
+      });
+      const data = await res.json();
+      return data.success
+        ? { data: data.data, error: null }
         : { data: null, error: data.message || data.error };
     } catch (err: any) {
       return { data: null, error: err.message || "Something went wrong" };

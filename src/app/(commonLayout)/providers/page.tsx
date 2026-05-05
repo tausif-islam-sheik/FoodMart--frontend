@@ -23,7 +23,7 @@ const ProvidersPage = async () => {
       {/* Modern Hero Header */}
       <div className="relative overflow-hidden">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-orange-50/30 to-background dark:from-brand-950/30 dark:via-orange-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-orange-50/30 to-background dark:from-background dark:via-muted/30 dark:to-background" />
         
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -32,9 +32,9 @@ const ProvidersPage = async () => {
         <div className="relative container mx-auto px-4 py-12 sm:py-16">
           <div className="max-w-3xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-brand-900/30 rounded-full shadow-sm border border-brand-100 mb-6">
-              <Sparkles className="w-4 h-4 text-brand-500" />
-              <span className="text-sm font-medium text-brand-600">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-muted/50 rounded-full shadow-sm border border-brand-100 dark:border-border mb-6">
+              <Sparkles className="w-4 h-4 text-brand-500 dark:text-brand-400" />
+              <span className="text-sm font-medium text-brand-600 dark:text-foreground">
                 Trusted Partners
               </span>
             </div>

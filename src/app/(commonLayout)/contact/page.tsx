@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contactPage/ContactForm";
 import ContactInfo from "@/components/contactPage/ContactInfo";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, MapPin, Clock, Headphones } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us | FoodMart - Get in Touch",
@@ -13,18 +13,42 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-orange-50 to-background">
-          <div className="container text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-500 text-sm font-medium mb-6 animate-fade-in">
-              <MessageSquare className="w-4 h-4" />
-              Get in Touch
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          {/* Background with gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-background to-orange-50/50 dark:from-background dark:via-muted/30 dark:to-background" />
+          
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+          <div className="container relative text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-brand-900/30 rounded-full shadow-sm border border-brand-100 mb-6">
+              <Headphones className="w-4 h-4 text-brand-500" />
+              <span className="text-sm font-medium text-brand-600">Get in Touch</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in" style={{ animationDelay: "100ms" }}>
-              Contact <span className="text-orange-500">Us</span>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Contact{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500">
+                Us
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>
-              Have questions or feedback? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Have questions or feedback? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
             </p>
+
+            {/* Quick Info Cards */}
+            <div className="flex flex-wrap justify-center gap-4 mt-10">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-muted/50 rounded-full shadow-sm border border-border">
+                <Clock className="w-4 h-4 text-brand-500" />
+                <span className="text-sm text-muted-foreground">Mon-Fri: 9AM-6PM</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-muted/50 rounded-full shadow-sm border border-border">
+                <MessageSquare className="w-4 h-4 text-brand-500" />
+                <span className="text-sm text-muted-foreground">Avg. response: 2h</span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -34,25 +58,39 @@ const Contact = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Contact Form */}
               <div className="order-2 lg:order-1">
-                <div className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-card">
-                  <h2 className="text-2xl font-bold text-foreground mb-2">
-                    Send us a Message
-                  </h2>
-                  <p className="text-muted-foreground mb-8">
-                    Fill out the form below and we'll get back to you shortly.
-                  </p>
+                <div className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-lg">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center">
+                      <MessageSquare className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-foreground">
+                        Send us a Message
+                      </h2>
+                      <p className="text-muted-foreground text-sm">
+                        Fill out the form below and we&apos;ll get back to you shortly.
+                      </p>
+                    </div>
+                  </div>
                   <ContactForm />
                 </div>
               </div>
 
               {/* Contact Information */}
               <div className="order-1 lg:order-2">
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  Contact Information
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Reach out to us through any of these channels.
-                </p>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Contact Information
+                    </h2>
+                    <p className="text-muted-foreground text-sm">
+                      Reach out to us through any of these channels.
+                    </p>
+                  </div>
+                </div>
                 <ContactInfo />
               </div>
             </div>
@@ -60,9 +98,13 @@ const Contact = () => {
         </section>
 
         {/* Map Section */}
-        <section className="py-16 bg-muted/30">
-          <div className="container">
+        <section className="py-16 bg-muted/30 relative overflow-hidden">
+          <div className="container relative">
             <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-brand-900/30 rounded-full shadow-sm border border-brand-100 mb-4">
+                <MapPin className="w-4 h-4 text-brand-500" />
+                <span className="text-sm font-medium text-brand-600">Visit Us</span>
+              </div>
               <h2 className="text-2xl font-bold text-foreground mb-2">
                 Find Us on the Map
               </h2>
@@ -70,11 +112,13 @@ const Contact = () => {
                 Visit our office or use the map for directions.
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-card h-[400px] bg-muted flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-orange-500" />
-                <p className="font-medium">Map Integration</p>
-                <p className="text-sm">123 Food Street, New York, NY 10001</p>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg h-[400px] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-brand-500 to-orange-500 flex items-center justify-center">
+                  <MapPin className="w-8 h-8 text-white" />
+                </div>
+                <p className="font-medium text-foreground text-lg">FoodMart Headquarters</p>
+                <p className="text-muted-foreground">123 Food Street, New York, NY 10001</p>
               </div>
             </div>
           </div>
@@ -83,12 +127,5 @@ const Contact = () => {
     </div>
   );
 };
-
-const MapPin = ({ className }: { className?: string }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-    <circle cx="12" cy="10" r="3"/>
-  </svg>
-);
 
 export default Contact;

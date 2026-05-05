@@ -63,7 +63,7 @@ const ContactForm = () => {
             placeholder="John Doe"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="h-12 bg-muted/50 border-border focus:border-orange-500 focus:ring-orange-500"
+            className="h-12 bg-muted/50 border-border focus:border-brand-500 focus:ring-brand-500/20 transition-all"
             maxLength={100}
           />
         </div>
@@ -77,7 +77,7 @@ const ContactForm = () => {
             placeholder="john@example.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="h-12 bg-muted/50 border-border focus:border-orange-500 focus:ring-orange-500"
+            className="h-12 bg-muted/50 border-border focus:border-brand-500 focus:ring-brand-500/20 transition-all"
             maxLength={255}
           />
         </div>
@@ -92,7 +92,7 @@ const ContactForm = () => {
           placeholder="How can we help you?"
           value={formData.subject}
           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-          className="h-12 bg-muted/50 border-border focus:border-orange-500 focus:ring-orange-500"
+          className="h-12 bg-muted/50 border-border focus:border-brand-500 focus:ring-brand-500/20 transition-all"
           maxLength={200}
         />
       </div>
@@ -106,7 +106,7 @@ const ContactForm = () => {
           placeholder="Tell us more about your inquiry..."
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="min-h-[150px] bg-muted/50 border-border focus:border-orange-500 focus:ring-orange-500 resize-none"
+          className="min-h-[150px] bg-muted/50 border-border focus:border-brand-500 focus:ring-brand-500/20 resize-none transition-all"
           maxLength={1000}
         />
         <p className="text-xs text-muted-foreground text-right">
@@ -117,10 +117,13 @@ const ContactForm = () => {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-12 gradient-primary bg-orange-500 shadow-button hover:opacity-90 transition-all text-base font-medium cursor-pointer"
+        className="w-full h-12 bg-brand-500 hover:bg-brand-600 text-white shadow-lg shadow-brand-500/25 transition-all text-base font-medium cursor-pointer"
       >
         {isSubmitting ? (
-          "Sending..."
+          <span className="flex items-center gap-2">
+            <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            Sending...
+          </span>
         ) : (
           <>
             Send Message

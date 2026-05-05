@@ -6,7 +6,7 @@ import { Twitter, Instagram, Linkedin, Facebook, Youtube, Mail, Phone, MapPin, H
 
 const footerLinks = {
   Product: [
-    { name: "Browse Meals", href: "/meals" },
+    { name: "Meals", href: "/meals" },
     { name: "Restaurants", href: "/providers" },
     { name: "Categories", href: "/categories" },
     { name: "Offers", href: "/offers" },
@@ -19,7 +19,6 @@ const footerLinks = {
   ],
   Support: [
     { name: "Help Center", href: "/help" },
-    { name: "FAQs", href: "/faqs" },
     { name: "Track Order", href: "/track" },
     { name: "Feedback", href: "/feedback" },
   ],

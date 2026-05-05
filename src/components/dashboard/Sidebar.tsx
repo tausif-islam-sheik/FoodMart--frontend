@@ -18,7 +18,13 @@ import {
   ClipboardList, 
   Users, 
   Tags, 
-  LayoutDashboard 
+  LayoutDashboard,
+  BarChart3,
+  Settings,
+  Heart,
+  MapPin,
+  CreditCard,
+  Bell
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,22 +35,31 @@ type Role = "CUSTOMER" | "PROVIDER" | "ADMIN";
 
 const LINKS = {
   CUSTOMER: [
-    { label: "Profile", href: "/dashboard/customer", icon: User },
+    { label: "Dashboard", href: "/dashboard/customer", icon: LayoutDashboard },
     { label: "My Orders", href: "/dashboard/customer/orders", icon: ShoppingBag },
     { label: "My Cart", href: "/dashboard/customer/my-carts", icon: ShoppingCart },
+    { label: "Favorites", href: "/dashboard/customer/favorites", icon: Heart },
+    { label: "Addresses", href: "/dashboard/customer/addresses", icon: MapPin },
+    { label: "Notifications", href: "/dashboard/customer/notifications", icon: Bell },
     { label: "Home", href: "/", icon: Home },
   ],
   PROVIDER: [
-    { label: "Restaurant Info", href: "/dashboard/provider", icon: Store },
+    { label: "Dashboard", href: "/dashboard/provider", icon: LayoutDashboard },
+    { label: "Restaurant Info", href: "/dashboard/provider/profile", icon: Store },
+    { label: "Provider Profile", href: "/dashboard/provider/account", icon: User },
     { label: "Manage Meals", href: "/dashboard/provider/meals", icon: Utensils },
     { label: "Orders", href: "/dashboard/provider/orders", icon: ClipboardList },
+    { label: "Reviews", href: "/dashboard/provider/reviews", icon: Heart },
     { label: "Home", href: "/", icon: Home },
   ],
   ADMIN: [
-    { label: "Profile", href: "/dashboard/admin", icon: User },
+    { label: "Dashboard", href: "/dashboard/admin", icon: LayoutDashboard },
+    { label: "Overview", href: "/dashboard/admin/overview", icon: BarChart3 },
     { label: "Users", href: "/dashboard/admin/users", icon: Users },
     { label: "Orders", href: "/dashboard/admin/orders", icon: ClipboardList },
+    { label: "Providers", href: "/dashboard/admin/providers", icon: Store },
     { label: "Categories", href: "/dashboard/admin/categories", icon: Tags },
+    { label: "Settings", href: "/dashboard/admin/settings", icon: Settings },
     { label: "Home", href: "/", icon: Home },
   ],
 };
@@ -63,7 +78,7 @@ export default function Sidebar({ role }: { role: Role }) {
   return (
     <>
       {/* Mobile Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b p-3 flex items-center">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-background/80 backdrop-blur-md border-b dark:border-border p-3 flex items-center">
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="hover:bg-orange-50">
@@ -73,7 +88,7 @@ export default function Sidebar({ role }: { role: Role }) {
 
           <SheetContent
             side="left"
-            className="w-72 flex flex-col h-full overflow-y-auto bg-white border-r-0"
+            className="w-72 flex flex-col h-full overflow-y-auto bg-white dark:bg-background border-r-0"
           >
             <SheetTitle className="mt-2 px-2">
               <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
@@ -97,9 +112,9 @@ export default function Sidebar({ role }: { role: Role }) {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex w-72 flex-col bg-white border-r h-screen sticky top-0 overflow-y-auto">
+      <aside className="hidden md:flex w-72 flex-col bg-white dark:bg-background border-r dark:border-border h-screen sticky top-0 overflow-y-auto">
         {/* Logo */}
-        <div className="p-6 border-b shrink-0">
+        <div className="p-6 border-b dark:border-border shrink-0">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
             <LayoutDashboard className="w-6 h-6 text-orange-500" />
             {dashboardTitle}
@@ -112,7 +127,7 @@ export default function Sidebar({ role }: { role: Role }) {
         </div>
         
         {/* Footer */}
-        <div className="p-4 border-t shrink-0">
+        <div className="p-4 border-t dark:border-border shrink-0">
           <p className="text-xs text-muted-foreground text-center">
             {new Date().getFullYear()} FoodMart. All rights reserved.
           </p>
@@ -147,8 +162,8 @@ function SidebarContent({
             className={cn(
               "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
               isActive 
-                ? "bg-linear-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-200" 
-                : "text-muted-foreground hover:bg-orange-50 hover:text-orange-600"
+                ? "bg-linear-to-r from-orange-500 to-orange-400 text-white shadow-md shadow-orange-200 dark:shadow-none" 
+                : "text-muted-foreground hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-accent dark:hover:text-orange-400"
             )}
           >
             <Icon className={cn("w-4 h-4", isActive ? "text-white" : "text-muted-foreground")} />

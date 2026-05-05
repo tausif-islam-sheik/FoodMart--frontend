@@ -1,4 +1,5 @@
 import Sidebar from "@/components/dashboard/Sidebar";
+import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import { userService } from "@/services/user.service";
 import { redirect } from "next/navigation";
 
@@ -15,11 +16,21 @@ export default async function DashboardLayout({
   if (!user) redirect("/login");
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-background">
       <Sidebar role={user?.role} />
-      <main className="flex-1 p-4 md:p-6 bg-gray-50 pt-16 md:pt-0">
-        {children}
-      </main>
+      <div className="flex-1 flex flex-col min-h-screen">
+        <DashboardNavbar 
+          user={{
+            name: user.name,
+            email: user.email,
+            image: user.image,
+            role: user.role,
+          }} 
+        />
+        <main className="flex-1 p-4 md:p-6 pt-4 md:pt-6 overflow-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

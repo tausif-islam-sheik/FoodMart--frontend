@@ -1,15 +1,23 @@
-import ProfileProviderClient from "@/components/dashboard/providerDashboard/ProfileProviderClient";
+import ProviderProfileClient from "@/components/dashboard/providerDashboard/ProviderProfileClient";
+import { providerService } from "@/services/provider.service";
 import { userService } from "@/services/user.service";
+import { redirect } from "next/navigation";
 
-const ProviderProfile = async () => {
-  const { data } = await userService.getSession();
-  const user = data?.user;
+const RestaurantInfoPage = async () => {
+  const { data: sessionData } = await userService.getSession();
+  const user = sessionData?.user;
+
+  if (!user) redirect("/login");
+  if (user.role !== "PROVIDER") redirect("/dashboard");
+
+  const { data: providers } = await providerService.getAllProviders();
+  const myProfile = providers?.find((provider: { userId: string }) => provider.userId === user.id);
 
   return (
-    <div className="p-4">
-      <ProfileProviderClient user={user} />
+    <div className="w-full">
+      <ProviderProfileClient profile={myProfile || null} />
     </div>
   );
 };
 
-export default ProviderProfile;
+export default RestaurantInfoPage;

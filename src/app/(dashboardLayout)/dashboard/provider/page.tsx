@@ -1,31 +1,36 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import ProviderProfileClient from "@/components/dashboard/providerDashboard/ProviderProfileClient";
+import ProviderDashboardClient from "@/components/dashboard/providerDashboard/ProviderDashboardClient";
 import { providerService } from "@/services/provider.service";
 import { userService } from "@/services/user.service";
+import { redirect } from "next/navigation";
 
-const ProviderOverview = async () => {
-  const { data } = await userService.getSession();
-  const user = data?.user;
+const ProviderDashboardPage = async () => {
+  const { data: sessionData } = await userService.getSession();
+  const user = sessionData?.user;
 
-  if (!user || user.role !== "PROVIDER") {
-    return (
-      <div className="flex items-center justify-center h-[60vh]">
-        <p className="text-red-500 font-medium">Access denied</p>
-      </div>
-    );
-  }
+  if (!user) redirect("/login");
+  if (user.role !== "PROVIDER") redirect("/dashboard");
 
-  const { data: providers } = await providerService.getAllProviders();
-
-  const myProfile = providers?.find(
-    (provider: any) => provider.userId === user.id,
-  );
+  // Fetch provider's orders
+  const response = await providerService.getProviderOrders();
+  const ordersData = response.data;
+  
+  const orders = ordersData 
+    ? ordersData.map((order: { id: string; customer?: { name?: string }; items?: { meal?: { name?: string } }[]; total?: number; status: string; createdAt: string }) => ({
+        id: order.id,
+        customerName: order.customer?.name || "Unknown",
+        items: order.items?.map((i) => i.meal?.name).join(", ") || "-",
+        total: order.total || 0,
+        status: order.status,
+        date: new Date(order.createdAt).toLocaleDateString(),
+      }))
+    : [];
 
   return (
-    <div className="w-full">
-      <ProviderProfileClient profile={myProfile || null} />
-    </div>
+    <ProviderDashboardClient 
+      user={{ name: user.name, email: user.email }}
+      orders={orders}
+    />
   );
 };
 
-export default ProviderOverview;
+export default ProviderDashboardPage;

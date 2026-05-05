@@ -7,7 +7,7 @@ const steps = [
   {
     id: 1,
     icon: <Search className="w-6 h-6" />,
-    title: "Browse Menu",
+    title: "Menu",
     description: "Explore thousands of dishes from top-rated restaurants in your area. Filter by cuisine, price, or dietary preferences.",
   },
   {
@@ -49,7 +49,7 @@ const stepVariants = {
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 md:py-24 bg-gradient-to-b from-transparent via-brand-50/30 to-transparent">
+    <section id="how-it-works" className="py-16 md:py-24 bg-gradient-to-b from-transparent via-brand-50/30 to-transparent dark:from-transparent dark:via-muted/20 dark:to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -58,7 +58,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-700 text-xs font-semibold rounded-full mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 dark:bg-muted/50 text-brand-700 dark:text-brand-400 text-xs font-semibold rounded-full mb-4">
             <Lightbulb className="w-3 h-3" />
             Simple Process
           </span>
@@ -116,7 +116,7 @@ export default function HowItWorks() {
                       {step.icon}
                     </div>
                     {/* Step number badge */}
-                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-white dark:bg-card border-2 border-brand-500 flex items-center justify-center text-sm font-bold text-brand-600">
+                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-white dark:bg-slate-800 border-2 border-brand-500 flex items-center justify-center text-sm font-bold text-brand-600 dark:text-brand-400">
                       {step.id}
                     </div>
                   </div>
