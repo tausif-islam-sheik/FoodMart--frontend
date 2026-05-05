@@ -8,12 +8,10 @@ const footerLinks = {
   Product: [
     { name: "Meals", href: "/meals" },
     { name: "Restaurants", href: "/providers" },
-    { name: "Categories", href: "/categories" },
     { name: "Offers", href: "/offers" },
   ],
   Company: [
     { name: "About Us", href: "/about" },
-    { name: "Careers", href: "/careers" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],
