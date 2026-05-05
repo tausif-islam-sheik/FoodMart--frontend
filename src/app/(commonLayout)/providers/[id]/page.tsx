@@ -182,7 +182,7 @@ const ProviderDetails = async ({ params }: ProviderDetailsProps) => {
                     </div>
                     <div className="text-left">
                       <p className="text-lg font-bold text-foreground">
-                        {new Date((user as { createdAt: string }).createdAt).getFullYear()}
+                        {new Date((user as unknown as { createdAt: string }).createdAt).getFullYear()}
                       </p>
                       <p className="text-xs text-muted-foreground">Partner Since</p>
                     </div>

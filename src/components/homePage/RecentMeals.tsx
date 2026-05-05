@@ -186,7 +186,8 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Card className="group relative overflow-hidden rounded-2xl border-0 bg-card shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 p-0">
-        {/* Image Container */}
+        <Link href={`/meals/${meal.id}`} className="block">
+          {/* Image Container */}
         <div className="relative h-52 overflow-hidden">
           {meal.image ? (
             <motion.img
@@ -221,9 +222,10 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
           <button
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               setIsLiked(!isLiked);
             }}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-600"
+            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-600 z-10"
           >
             <Heart
               className={`w-4 h-4 transition-colors ${
@@ -237,12 +239,14 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-3 left-3 right-3"
+            className="absolute bottom-3 left-3 right-3 z-10"
           >
-            <button className="w-full py-2.5 bg-card text-foreground font-medium rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-brand-50 transition-colors">
-              <Plus className="w-4 h-4" />
-              Quick Add
-            </button>
+            <Link href={`/meals/${meal.id}`} onClick={(e) => e.stopPropagation()}>
+              <button className="w-full py-2.5 bg-card text-foreground font-medium rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-brand-50 hover:text-brand-900 transition-colors cursor-pointer">
+                <Plus className="w-4 h-4" />
+                See Details
+              </button>
+            </Link>
           </motion.div>
         </div>
 
@@ -275,6 +279,7 @@ function MealCard({ meal, index }: { meal: MealData; index: number }) {
             </div>
           </div>
         </CardContent>
+        </Link>
       </Card>
     </motion.div>
   );

@@ -16,12 +16,12 @@ export default async function AdminOverviewPage() {
   ]);
 
   // Transform users for table
-  const tableUsers = users?.map((user: { id: string; name: string; email: string; role: string; status: string }) => ({
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    status: user.status,
+  const tableUsers = users?.map((user) => ({
+    id: user.id || "",
+    name: user.name || "",
+    email: user.email || "",
+    role: user.role || "",
+    status: user.status || "",
   })) || [];
 
   // Calculate real stats from orders
@@ -33,8 +33,8 @@ export default async function AdminOverviewPage() {
     totalUsers: users?.length || 0,
     totalOrders,
     totalRevenue,
-    totalProviders: users?.filter((u: { role: string }) => u.role === "PROVIDER").length || 0,
-    activeUsers: users?.filter((u: { status: string }) => u.status === "ACTIVE").length || 0,
+    totalProviders: users?.filter((u) => u.role === "PROVIDER").length || 0,
+    activeUsers: users?.filter((u) => u.status === "ACTIVE").length || 0,
     pendingOrders,
   };
 

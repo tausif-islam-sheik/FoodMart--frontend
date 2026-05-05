@@ -28,11 +28,11 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "#", color: "hover:bg-sky-500 hover:text-white" },
-  { name: "Instagram", icon: Instagram, href: "#", color: "hover:bg-pink-500 hover:text-white" },
-  { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:bg-blue-600 hover:text-white" },
-  { name: "Facebook", icon: Facebook, href: "#", color: "hover:bg-blue-500 hover:text-white" },
-  { name: "YouTube", icon: Youtube, href: "#", color: "hover:bg-red-500 hover:text-white" },
+  { name: "Twitter", icon: Twitter, href: "https://x.com/home", color: "hover:bg-sky-500 hover:text-white" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com", color: "hover:bg-pink-500 hover:text-white" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/feed", color: "hover:bg-blue-600 hover:text-white" },
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com", color: "hover:bg-blue-500 hover:text-white" },
+  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com", color: "hover:bg-red-500 hover:text-white" },
 ];
 
 export default function Footer() {

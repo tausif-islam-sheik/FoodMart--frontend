@@ -84,7 +84,7 @@ export function LoginForm({ callbackURL = "/", ...props }: LoginFormProps) {
     >
       <Card
         {...props}
-        className="w-full max-w-md mx-auto rounded-2xl shadow-xl border-0 bg-white/80 backdrop-blur-xl overflow-hidden"
+        className="w-full max-w-md mx-auto rounded-2xl shadow-xl border-0 bg-card/95 backdrop-blur-xl overflow-hidden"
       >
         {/* Decorative top bar */}
         <div className="h-1.5 gradient-brand" />
@@ -221,7 +221,7 @@ export function LoginForm({ callbackURL = "/", ...props }: LoginFormProps) {
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-muted-foreground">
+              <span className="px-4 bg-card text-muted-foreground">
                 Or continue with
               </span>
             </div>
@@ -240,7 +240,7 @@ export function LoginForm({ callbackURL = "/", ...props }: LoginFormProps) {
                   setEmail("admin@foodmart.com");
                   setPassword("admin@foodmart.com");
                 }}
-                className="h-10 px-2 text-xs font-medium border-orange-200 hover:bg-orange-50 hover:border-orange-300 transition-colors"
+                className="h-10 px-2 text-xs font-medium border-orange-200 hover:bg-orange-50 hover:border-orange-300 transition-colors dark:border-orange-800 dark:hover:bg-orange-950"
               >
                 <UserCog className="w-3.5 h-3.5 mr-1 text-orange-500" />
                 Admin
@@ -252,7 +252,7 @@ export function LoginForm({ callbackURL = "/", ...props }: LoginFormProps) {
                   setEmail("customer@gmail.com");
                   setPassword("customer@gmail.com");
                 }}
-                className="h-10 px-2 text-xs font-medium border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="h-10 px-2 text-xs font-medium border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-colors dark:border-blue-800 dark:hover:bg-blue-950"
               >
                 <User className="w-3.5 h-3.5 mr-1 text-blue-500" />
                 Customer
@@ -264,7 +264,7 @@ export function LoginForm({ callbackURL = "/", ...props }: LoginFormProps) {
                   setEmail("ethan@gmail.com");
                   setPassword("ethan@gmail.com");
                 }}
-                className="h-10 px-2 text-xs font-medium border-green-200 hover:bg-green-50 hover:border-green-300 transition-colors"
+                className="h-10 px-2 text-xs font-medium border-green-200 hover:bg-green-50 hover:border-green-300 transition-colors dark:border-green-800 dark:hover:bg-green-950"
               >
                 <ChefHat className="w-3.5 h-3.5 mr-1 text-green-500" />
                 Provider
