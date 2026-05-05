@@ -4,7 +4,7 @@ import { mealService } from "@/services/meal.service";
 import { userService } from "@/services/user.service";
 
 export const metadata: Metadata = {
-  title: "Browse Meals | FoodMart - Find Your Favorite Dishes",
+  title: "Meals | FoodMart - Find Your Favorite Dishes",
   description: "Explore a wide variety of delicious meals from top restaurants. Browse categories, filter by preferences, and order your favorite dishes online.",
 };
 
