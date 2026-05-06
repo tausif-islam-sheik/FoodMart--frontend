@@ -1,20 +1,38 @@
-# 🍽️ FoodMart – Full-Stack Meal Ordering Platform
+<div align="center">
 
-**"Discover, Order & Manage Delicious Meals Seamlessly"**
+# 🍽️ FoodMart
 
-## 🌍 Live Demo
+A modern, Full-Stack meal ordering and delivery platform
 
-Frontend: https://foodmart-frontend.vercel.app
+<p align="center">
+  <img src="https://img.shields.io/badge/NEXT.JS@14-black?logo=next.js&logoColor=white&style=for-the-badge" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TYPESCRIPT@5-3178C6?logo=typescript&logoColor=white&style=for-the-badge" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/EXPRESS.JS-000000?logo=express&logoColor=white&style=for-the-badge" alt="Express.js" />
+  <img src="https://img.shields.io/badge/POSTGRESQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/MIT%20LICENSE-yellow?style=for-the-badge" alt="MIT License" />
+</p>
+
+<p align="center">
+  <a href="https://foodmart-frontend.vercel.app">Live Demo</a> · <a href="https://github.com/tausif-islam-sheik/FoodMart--backend">Backend Repository</a>
+</p>
+
+</div>
 
 ---
 
-## 📌 Project Overview
+## ❓ Problem Statement
 
-FoodMart is a full-stack, role-based meal ordering web application designed to simulate a real-world food delivery platform. The system allows customers to browse meals, place orders, and track delivery status, while providers manage their menus and fulfill orders. Admins oversee the entire platform including users, orders, and categories.
+Traditional food ordering processes often involve fragmented communication between customers and food providers, lack of order tracking, and no centralized platform for managing menus, orders, and deliveries. Additionally, many existing solutions don't provide role-based access control for different stakeholders (customers, providers, admins) in a single unified system.
 
-This project demonstrates modern full-stack development using scalable architecture, RESTful API design, authentication & authorization, and structured relational database modeling.
+## 💡 Solution Overview
 
-The application is built using **Next.js (App Router)** on the frontend and **Node.js + Express + Prisma + PostgreSQL** on the backend.
+**FoodMart** solves these challenges by providing a unified, full-stack meal ordering platform with distinct roles and permissions:
+
+- **For Customers**: A seamless browsing and ordering experience with real-time order tracking
+- **For Providers**: A dedicated dashboard to manage menus, view orders, and update order status
+- **For Admins**: Complete oversight of the platform with user management and order monitoring capabilities
+
+The platform streamlines the entire food ordering lifecycle from discovery to delivery, eliminating communication gaps and providing transparency at every step.
 
 ---
 
@@ -69,26 +87,76 @@ The application is built using **Next.js (App Router)** on the frontend and **No
 
 ---
 
-## 🏗️ System Architecture
+## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-- Shadcn
-- Protected routes
-- Dynamic rendering
+- **Next.js** (App Router) – React framework with server-side rendering
+- **TypeScript** – Type-safe development
+- **Tailwind CSS** – Utility-first styling
+- **Shadcn** – UI component library
+- **Protected routes** – Authentication-based route guarding
+- **Dynamic rendering** – Server and client component architecture
 
 ### Backend
-- Node.js
-- Express.js
-- RESTful API structure
-- Role-based authorization middleware
+- **Node.js** – JavaScript runtime
+- **Express.js** – Web framework
+- **RESTful API** – Standardized API structure
+- **Better-Auth** – Modern authentication framework with multiple auth strategies
+- **JWT Authentication** – Secure token-based auth
+- **Role-based authorization middleware** – Permission control
 
 ### Database
-- PostgreSQL
-- Prisma ORM
-- Relational schema design
+- **PostgreSQL** – Relational database
+- **Prisma ORM** – Database toolkit and query builder
+- **Relational schema design** – Structured data relationships
+
+---
+
+
+## 🚀 Getting Started / Setup Instructions
+
+### Prerequisites
+- Node.js (v18 or higher)
+- PostgreSQL database
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tausif-islam-sheik/FoodMart--frontend.git
+   cd FoodMart-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables** (see [Environment Variables](#-environment-variables) section)
+
+4. **Run the development server**
+   ```bash
+   pnpm dev
+   ```
+
+5. **Open the application**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000
+# BACKEND_URL=http://localhost:5000
+# NEXT_PUBLIC_AUTH_URL=http://localhost:5000/api/auth
+# NEXT_PUBLIC_IMGBB_API_KEY= api_key
+```
+
+> **Note**: Replace placeholder values with your actual configuration. Never commit `.env.local` to version control.
 
 ---
 
@@ -108,3 +176,9 @@ PLACED → PREPARING → READY → DELIVERED
 - Admin analytics dashboard  
 - Advanced search & filtering  
 - Rating moderation system  
+
+
+
+## 📸 Screenshot
+
+
