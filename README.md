@@ -5,7 +5,7 @@
 A modern, Full-Stack meal ordering and delivery platform
 
 <p align="center">
-  <img src="https://img.shields.io/badge/NEXT.JS@14-black?logo=next.js&logoColor=white&style=for-the-badge" alt="Next.js" />
+  <img src="https://img.shields.io/badge/NEXT.JS@16-black?logo=next.js&logoColor=white&style=for-the-badge" alt="Next.js" />
   <img src="https://img.shields.io/badge/TYPESCRIPT@5-3178C6?logo=typescript&logoColor=white&style=for-the-badge" alt="TypeScript" />
   <img src="https://img.shields.io/badge/EXPRESS.JS-000000?logo=express&logoColor=white&style=for-the-badge" alt="Express.js" />
   <img src="https://img.shields.io/badge/POSTGRESQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge" alt="PostgreSQL" />
@@ -181,4 +181,5 @@ PLACED → PREPARING → READY → DELIVERED
 
 ## 📸 Screenshot
 
+<img width="1920" height="12101" alt="FoodMart" src="https://github.com/user-attachments/assets/875fca2e-d169-4dd9-8493-4d0bfd6a2d83" />
 
