@@ -23,14 +23,14 @@ export default function AdminSettingsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Settings</h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
             Configure platform-wide settings.
           </p>
         </div>
-        <Button onClick={handleSave} className="bg-brand-500 hover:bg-brand-600">
+        <Button onClick={handleSave} className="bg-brand-500 hover:bg-brand-600 w-full sm:w-auto">
           <Save className="w-4 h-4 mr-2" />
           Save Changes
         </Button>

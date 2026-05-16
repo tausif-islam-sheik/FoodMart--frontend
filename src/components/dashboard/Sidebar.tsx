@@ -36,6 +36,7 @@ type Role = "CUSTOMER" | "PROVIDER" | "ADMIN";
 const LINKS = {
   CUSTOMER: [
     { label: "Dashboard", href: "/dashboard/customer", icon: LayoutDashboard },
+    { label: "Profile", href: "/dashboard/customer/profile", icon: User },
     { label: "My Orders", href: "/dashboard/customer/orders", icon: ShoppingBag },
     { label: "My Cart", href: "/dashboard/customer/my-carts", icon: ShoppingCart },
     { label: "Favorites", href: "/dashboard/customer/favorites", icon: Heart },

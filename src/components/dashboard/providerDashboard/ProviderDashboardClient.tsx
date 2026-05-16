@@ -73,10 +73,10 @@ export default function ProviderDashboardClient({
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
           {restaurantName ? `${restaurantName} Dashboard` : "Provider Dashboard"}
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-sm sm:text-base">
           Welcome back, {user.name}! Here&apos;s your restaurant performance overview.
         </p>
       </div>

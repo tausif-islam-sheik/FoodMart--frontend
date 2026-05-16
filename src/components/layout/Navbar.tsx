@@ -341,6 +341,36 @@ const Navbar = () => {
                           <p className="text-xs text-muted-foreground truncate">{userInfo.email}</p>
                         </div>
                       </div>
+                      <SheetClose asChild>
+                        <Link
+                          href={
+                            userInfo.role === "ADMIN"
+                              ? "/dashboard/admin"
+                              : userInfo.role === "PROVIDER"
+                                ? "/dashboard/provider"
+                                : "/dashboard/customer"
+                          }
+                          className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                        >
+                          <LayoutDashboard className="w-4 h-4" />
+                          Dashboard
+                        </Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Link
+                          href={
+                            userInfo.role === "ADMIN"
+                              ? "/dashboard/admin/profile"
+                              : userInfo.role === "PROVIDER"
+                                ? "/dashboard/provider/profile"
+                                : "/dashboard/customer/profile"
+                          }
+                          className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                        >
+                          <Settings className="w-4 h-4" />
+                          Profile Settings
+                        </Link>
+                      </SheetClose>
                       <Button
                         variant="outline"
                         className="w-full gap-2 border-destructive/30 hover:bg-destructive/10"

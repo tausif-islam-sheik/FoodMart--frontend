@@ -146,7 +146,7 @@ export function AdminCategoryChart({ data }: { data: CategoryData[] }) {
               <Tooltip 
                 contentStyle={{ backgroundColor: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }}
               />
-              <Legend />
+              <Legend wrapperStyle={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }} />
             </PieChart>
           </ResponsiveContainer>
         </CardContent>
@@ -318,7 +318,7 @@ export function CustomerCategoryChart({ data }: { data: CustomerCategoryData[] }
               <Tooltip 
                 contentStyle={{ backgroundColor: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }}
               />
-              <Legend />
+              <Legend wrapperStyle={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }} />
             </PieChart>
           </ResponsiveContainer>
         </CardContent>

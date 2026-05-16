@@ -61,8 +61,8 @@ export default function AdminOverviewClient({ users, stats }: AdminOverviewClien
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Overview</h1>
+        <p className="text-muted-foreground text-sm sm:text-base">
           Comprehensive analytics and insights for your platform.
         </p>
       </div>

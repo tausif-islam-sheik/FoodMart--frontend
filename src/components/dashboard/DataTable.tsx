@@ -209,7 +209,7 @@ export function DataTable<T extends { id?: string }>({
                 />
               </div>
             )}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               {filterable && filterOptions.map((filter) => (
                 <Select
                   key={filter.key}
@@ -239,7 +239,7 @@ export function DataTable<T extends { id?: string }>({
           </div>
 
           {/* Table */}
-          <div className="rounded-md border">
+          <div className="rounded-md border overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -319,7 +319,7 @@ export function DataTable<T extends { id?: string }>({
           </div>
 
           {/* Pagination */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between flex-wrap">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>
                 Showing {((currentPage - 1) * itemsPerPage) + 1} to{" "}
